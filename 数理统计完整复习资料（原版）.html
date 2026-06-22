@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数理统计完整复习资料 · 上海财经大学</title>
+<script>
+MathJax = {
+  tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+:root{
+  --red:#c0392b;--blue:#2471a3;--green:#1e8449;
+  --orange:#d35400;--purple:#7d3c98;--teal:#148f77;
+  --bg:#f4f6f8;--card:#fff;--border:#dde1e7;--text:#1a1a2e;--muted:#6c757d;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);font-size:15px;line-height:1.8;}
+
+/* ══ HEADER ══ */
+header{
+  background:linear-gradient(135deg,#922b21 0%,#c0392b 50%,#d35400 100%);
+  color:#fff;padding:30px 40px 22px;position:sticky;top:0;z-index:999;
+  box-shadow:0 3px 12px rgba(0,0,0,.3);
+}
+header h1{font-size:21px;font-weight:800;letter-spacing:.5px;}
+header p{font-size:13px;opacity:.88;margin-top:5px;}
+.hdr-badges{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;}
+.hbadge{background:rgba(255,255,255,.18);border-radius:20px;padding:3px 12px;
+  font-size:12px;cursor:pointer;transition:.15s;}
+.hbadge:hover{background:rgba(255,255,255,.32);}
+
+/* ══ LAYOUT ══ */
+.layout{display:flex;max-width:1360px;margin:0 auto;padding:0 12px;}
+nav.sidebar{
+  width:210px;flex-shrink:0;position:sticky;top:82px;align-self:flex-start;
+  max-height:calc(100vh - 92px);overflow-y:auto;padding:16px 0 60px;
+}
+nav.sidebar::-webkit-scrollbar{width:4px;}
+nav.sidebar::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px;}
+nav.sidebar h4{
+  font-size:10px;letter-spacing:1.8px;text-transform:uppercase;
+  color:var(--muted);padding:14px 14px 5px;
+}
+nav.sidebar a{
+  display:block;padding:5px 14px;color:var(--text);
+  text-decoration:none;font-size:13px;border-radius:5px;
+  transition:.12s;border-left:3px solid transparent;
+}
+nav.sidebar a:hover{background:#fce8e8;color:var(--red);}
+nav.sidebar a.active{background:#fce8e8;color:var(--red);
+  font-weight:700;border-left-color:var(--red);}
+main{flex:1;padding:28px 22px 100px;min-width:0;}
+
+/* ══ PROGRESS BAR ══ */
+.progress-wrap{background:#e8ecf0;border-radius:8px;padding:16px 22px;
+  margin-bottom:28px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.progress-wrap span{font-size:13px;color:var(--muted);margin-right:6px;}
+.pill{display:inline-block;padding:4px 13px;border-radius:20px;
+  font-size:12px;font-weight:600;cursor:pointer;transition:.14s;
+  text-decoration:none;border:1.5px solid;}
+.pill-r{background:#fce8e8;color:var(--red);border-color:#e8a0a0;}
+.pill-b{background:#eaf2fb;color:var(--blue);border-color:#a9c9ea;}
+.pill-g{background:#eafaf1;color:var(--green);border-color:#90d4aa;}
+.pill-o{background:#fef5e7;color:var(--orange);border-color:#f0c060;}
+.pill-p{background:#f5eef8;color:var(--purple);border-color:#c8a0dc;}
+.pill-t{background:#e8f8f5;color:var(--teal);border-color:#80cabb;}
+.pill:hover{opacity:.8;transform:translateY(-1px);}
+
+/* ══ SECTION ══ */
+section{margin-bottom:60px;scroll-margin-top:90px;}
+section>h2{
+  font-size:19px;font-weight:800;color:var(--red);
+  border-left:5px solid var(--red);padding-left:14px;
+  margin-bottom:20px;display:flex;align-items:center;gap:10px;
+}
+section>h2 .num{
+  background:var(--red);color:#fff;border-radius:50%;
+  width:30px;height:30px;display:flex;align-items:center;
+  justify-content:center;font-size:13px;flex-shrink:0;
+}
+section>h3{
+  font-size:15px;font-weight:700;color:var(--blue);
+  margin:26px 0 12px;padding-bottom:6px;
+  border-bottom:1.5px solid #d0dcea;
+}
+
+/* ══ CARDS ══ */
+.card{background:var(--card);border-radius:10px;padding:16px 20px;
+  margin-bottom:14px;border:1px solid var(--border);
+  box-shadow:0 1px 5px rgba(0,0,0,.05);}
+.card.def{border-left:4px solid var(--blue);}
+.card.thm{border-left:4px solid var(--purple);}
+.card.tip{border-left:4px solid var(--green);background:#f0faf4;}
+.card.warn{border-left:4px solid var(--orange);background:#fefae7;}
+.card.key{border-left:4px solid var(--red);background:#fef5f5;}
+.card-label{font-size:11px;font-weight:800;letter-spacing:1.2px;
+  text-transform:uppercase;margin-bottom:7px;}
+.card.def .card-label{color:var(--blue);}
+.card.thm .card-label{color:var(--purple);}
+.card.tip .card-label{color:var(--green);}
+.card.warn .card-label{color:var(--orange);}
+.card.key .card-label{color:var(--red);}
+
+/* ══ EXAMPLE ══ */
+.ex{background:#fffcf5;border:1px solid #f0c060;border-radius:10px;
+  margin-bottom:18px;overflow:hidden;}
+.ex-hd{background:linear-gradient(90deg,#e67e22,#f39c12);
+  color:#fff;padding:10px 18px;font-weight:700;font-size:14px;
+  display:flex;justify-content:space-between;align-items:center;}
+.ex-tag{background:rgba(255,255,255,.25);border-radius:12px;
+  padding:2px 10px;font-size:11px;font-weight:600;}
+.ex-body{padding:16px 20px;}
+.ex-q{font-weight:600;margin-bottom:10px;color:#4a2800;}
+.sol-btn{
+  background:none;border:1.5px solid #e67e22;color:#c0610a;
+  padding:6px 16px;border-radius:20px;cursor:pointer;font-size:13px;
+  margin:6px 0;transition:.14s;font-family:inherit;
+}
+.sol-btn:hover{background:#e67e22;color:#fff;}
+.sol{display:none;margin-top:12px;padding-top:12px;
+  border-top:1px dashed #f0c060;}
+.sol.open{display:block;}
+
+/* ══ STEPS ══ */
+.step{display:flex;gap:10px;margin:9px 0;}
+.sn{width:24px;height:24px;border-radius:50%;background:var(--blue);
+  color:#fff;font-size:12px;font-weight:700;display:flex;
+  align-items:center;justify-content:center;flex-shrink:0;margin-top:3px;}
+.sb{flex:1;}
+
+/* ══ TABLES ══ */
+.ft{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;}
+.ft th{background:#eef2ff;color:#2c3e82;padding:9px 13px;
+  font-weight:700;border:1px solid #c9d3f5;text-align:left;}
+.ft td{padding:8px 13px;border:1px solid var(--border);vertical-align:top;}
+.ft tr:nth-child(even) td{background:#f8faff;}
+.ft tr:hover td{background:#eef2ff;}
+
+/* ══ GRID ══ */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+@media(max-width:900px){.g2,.g3{grid-template-columns:1fr;}}
+
+/* ══ FORMULA BOX ══ */
+.fbox{
+  background:linear-gradient(135deg,#f8f0ff,#fff);
+  border:1.5px solid #c8a0dc;border-radius:10px;
+  padding:14px 18px;margin:12px 0;text-align:center;
+}
+
+/* ══ DIVIDER ══ */
+.divider{border:none;border-top:2px dashed var(--border);margin:32px 0;}
+
+/* ══ TREE ══ */
+.tree{font-size:14px;line-height:2.1;padding:10px 0;}
+.tr{padding:1px 0 1px 22px;position:relative;}
+.tr::before{content:"├─ ";color:var(--muted);position:absolute;left:0;}
+.tr:last-child::before{content:"└─ ";}
+.tb{padding-left:42px;}
+.root-node{font-weight:700;color:var(--red);font-size:15px;}
+
+/* ══ HIGHLIGHT ══ */
+.hl{background:#fff3cd;padding:1px 4px;border-radius:3px;}
+.red{color:var(--red);font-weight:700;}
+.blue{color:var(--blue);font-weight:600;}
+.green{color:var(--green);font-weight:600;}
+p{margin-bottom:8px;}
+ul,ol{padding-left:20px;margin-bottom:8px;}
+li{margin-bottom:4px;}
+
+/* ══ SCROLL TOP ══ */
+.scroll-top{position:fixed;bottom:26px;right:26px;background:var(--red);
+  color:#fff;border:none;width:44px;height:44px;border-radius:50%;
+  font-size:20px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.25);
+  display:flex;align-items:center;justify-content:center;z-index:999;}
+
+/* ══ CHAP BADGE ══ */
+.chap-num{background:var(--red);color:#fff;border-radius:5px;
+  padding:1px 7px;font-size:12px;margin-right:6px;}
+
+/* ══ COMPARE BOX ══ */
+.cmp{display:flex;gap:0;border:1.5px solid var(--border);
+  border-radius:10px;overflow:hidden;margin:12px 0;}
+.cmp-col{flex:1;padding:14px 16px;}
+.cmp-col:not(:last-child){border-right:1.5px solid var(--border);}
+.cmp-hd{font-weight:700;font-size:13px;margin-bottom:8px;color:#fff;
+  background:var(--blue);margin:-14px -16px 10px;padding:8px 16px;}
+.cmp-col:last-child .cmp-hd{background:var(--purple);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📊 数理统计 · 完整期末复习资料（第2–14讲）</h1>
+  <p>上海财经大学 · 信息管理与工程学院 · 袁洪松 | 三大分布 → 参数估计 → 假设检验 → ANOVA → Fisher信息 → LRT → 完备性 → 指数族 → MVUE</p>
+  <div class="hdr-badges">
+    <span class="hbadge" onclick="document.getElementById('p1').scrollIntoView({behavior:'smooth'})">第2-3讲：三大分布&抽样</span>
+    <span class="hbadge" onclick="document.getElementById('p2').scrollIntoView({behavior:'smooth'})">第3-4讲：参数估计</span>
+    <span class="hbadge" onclick="document.getElementById('p3').scrollIntoView({behavior:'smooth'})">第5讲：区间估计</span>
+    <span class="hbadge" onclick="document.getElementById('p4').scrollIntoView({behavior:'smooth'})">第6-7讲：假设检验</span>
+    <span class="hbadge" onclick="document.getElementById('p5').scrollIntoView({behavior:'smooth'})">第8讲：ANOVA&回归</span>
+    <span class="hbadge" onclick="document.getElementById('p6').scrollIntoView({behavior:'smooth'})">第9讲：Fisher信息&RCB</span>
+    <span class="hbadge" onclick="document.getElementById('p7').scrollIntoView({behavior:'smooth'})">第10-11讲：三大检验</span>
+    <span class="hbadge" onclick="document.getElementById('p8').scrollIntoView({behavior:'smooth'})">第13-14讲：完备性&MVUE</span>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="sidebar">
+  <h4>基础部分（第2-8讲）</h4>
+  <a href="#p1">一、三大分布</a>
+  <a href="#p1b">二、正态抽样分布</a>
+  <a href="#p2">三、矩估计 & MLE</a>
+  <a href="#p2b">四、估计量评价准则</a>
+  <a href="#p3">五、区间估计</a>
+  <a href="#p4">六、假设检验</a>
+  <a href="#p5">七、ANOVA & 回归</a>
+  <h4>进阶部分（第9-14讲）</h4>
+  <a href="#p6">八、Fisher信息量</a>
+  <a href="#p6b">九、Rao-Cramer下界</a>
+  <a href="#p7">十、三大渐近检验</a>
+  <a href="#p7b">十一、多参数情形</a>
+  <a href="#p8">十二、完备性</a>
+  <a href="#p8b">十三、指数分布类</a>
+  <a href="#p8c">十四、MVUE求法</a>
+  <a href="#p9">十五、综合例题</a>
+  <a href="#p10">十六、考前速查</a>
+</nav>
+
+<main>
+
+<!-- ══════ JUMP PILLS ══════ -->
+<div class="progress-wrap">
+  <span>快速跳转：</span>
+  <a class="pill pill-r" href="#p1">三大分布</a>
+  <a class="pill pill-r" href="#p1b">抽样定理</a>
+  <a class="pill pill-b" href="#p2">MLE</a>
+  <a class="pill pill-b" href="#p2b">评价准则</a>
+  <a class="pill pill-g" href="#p3">区间估计</a>
+  <a class="pill pill-g" href="#p4">假设检验</a>
+  <a class="pill pill-o" href="#p5">ANOVA</a>
+  <a class="pill pill-p" href="#p6">Fisher信息</a>
+  <a class="pill pill-p" href="#p7">三大检验</a>
+  <a class="pill pill-t" href="#p8">完备性</a>
+  <a class="pill pill-t" href="#p8b">指数族</a>
+  <a class="pill pill-t" href="#p8c">MVUE</a>
+  <a class="pill pill-r" href="#p10">⚡速查表</a>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PART 1: 三大分布 & 正态总体抽样分布（第2-3讲）
+══════════════════════════════════════════════ -->
+<section id="p1">
+<h2><span class="num">1</span>三大分布（第2讲）</h2>
+
+<h3>1.1 统计量</h3>
+<div class="card def">
+<div class="card-label">定义</div>
+<p>样本 $X_1,\ldots,X_n$ 的函数 $T=T(X_1,\ldots,X_n)$，若<strong>不含任何未知参数</strong>，则称为<strong>统计量</strong>。</p>
+</div>
+<table class="ft">
+<tr><th>统计量</th><th>公式</th><th>说明</th></tr>
+<tr><td>样本均值 $\bar X$</td><td>$\bar X=\frac{1}{n}\sum X_i$</td><td>估计总体均值 $\mu$，无偏</td></tr>
+<tr><td>样本方差 $S^2$</td><td>$S^2=\frac{1}{n-1}\sum(X_i-\bar X)^2$</td><td>分母 $n-1$，无偏估计 $\sigma^2$</td></tr>
+<tr><td>样本二阶中心矩 $B_2$</td><td>$B_2=\frac{1}{n}\sum(X_i-\bar X)^2$</td><td>分母 $n$，有偏，$B_2=\frac{n-1}{n}S^2$</td></tr>
+<tr><td>样本 $k$ 阶原点矩 $A_k$</td><td>$A_k=\frac{1}{n}\sum X_i^k$</td><td>矩估计的基础</td></tr>
+</table>
+
+<h3>1.2 $\chi^2$ 分布</h3>
+<div class="g2">
+<div class="card def">
+<div class="card-label">定义</div>
+<p>$X_1,\ldots,X_n$ 独立 $\sim N(0,1)$，则</p>
+$$Y=\sum_{i=1}^n X_i^2\sim\chi^2(n)$$
+</div>
+<div class="card tip">
+<div class="card-label">核心性质</div>
+<ul>
+<li>$E(Y)=n$，$\text{Var}(Y)=2n$</li>
+<li><strong>可加性</strong>：独立 $\chi^2(n_1)+\chi^2(n_2)=\chi^2(n_1+n_2)$</li>
+<li>与Gamma关系：$\chi^2(n)=\Gamma(n/2,2)$</li>
+<li>分位数：$P(Y>\chi^2_\alpha(n))=\alpha$</li>
+</ul>
+</div>
+</div>
+
+<h3>1.3 $t$ 分布</h3>
+<div class="g2">
+<div class="card def">
+<div class="card-label">定义</div>
+<p>$X\sim N(0,1)$，$Y\sim\chi^2(n)$，独立，则</p>
+$$T=\frac{X}{\sqrt{Y/n}}\sim t(n)$$
+</div>
+<div class="card tip">
+<div class="card-label">核心性质</div>
+<ul>
+<li>关于 $0$ 对称</li>
+<li>$E(T)=0$（$n>1$）</li>
+<li>$n\to\infty$ 时趋向 $N(0,1)$</li>
+<li>$t_{1-\alpha}(n)=-t_\alpha(n)$</li>
+</ul>
+</div>
+</div>
+
+<h3>1.4 $F$ 分布</h3>
+<div class="g2">
+<div class="card def">
+<div class="card-label">定义</div>
+<p>$X\sim\chi^2(n_1)$，$Y\sim\chi^2(n_2)$，独立，则</p>
+$$F=\frac{X/n_1}{Y/n_2}\sim F(n_1,n_2)$$
+</div>
+<div class="card tip">
+<div class="card-label">核心性质</div>
+<ul>
+<li>$F>0$ 恒正</li>
+<li>$1/F\sim F(n_2,n_1)$</li>
+<li>$F_{1-\alpha}(n_1,n_2)=\dfrac{1}{F_\alpha(n_2,n_1)}$</li>
+<li>$t^2(n)=F(1,n)$</li>
+</ul>
+</div>
+</div>
+
+<div class="card key">
+<div class="card-label">🔑 识别口诀</div>
+<div class="g3">
+<div><strong>$\chi^2(n)$：</strong><br>$n$ 个独立标准正态<br>的<span class="red">平方和</span></div>
+<div><strong>$t(n)$：</strong><br>$N(0,1)$ 除以<br>$\sqrt{\chi^2(n)/n}$</div>
+<div><strong>$F(n_1,n_2)$：</strong><br>两个 $\chi^2$ 各除以<br>自由度之<span class="red">比</span></div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题1：识别三个分布 <span class="ex-tag">基础题型</span></div>
+<div class="ex-body">
+<p class="ex-q">$X,Y,Z$ 独立 $\sim N(0,1)$，判断：① $X^2+Y^2+Z^2$ ② $X/\sqrt{(Y^2+Z^2)/2}$ ③ $2X^2/(Y^2+Z^2)$</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">①</div><div class="sb">$X^2+Y^2+Z^2\sim\chi^2(3)$（3个独立标准正态平方和）</div></div>
+<div class="step"><div class="sn">②</div><div class="sb">分子 $X\sim N(0,1)$，分母 $\sqrt{(Y^2+Z^2)/2}=\sqrt{\chi^2(2)/2}$，独立 $\Rightarrow t(2)$</div></div>
+<div class="step"><div class="sn">③</div><div class="sb">$\dfrac{2X^2}{Y^2+Z^2}=\dfrac{X^2/1}{(Y^2+Z^2)/2}$，分子 $\chi^2(1)$，分母 $\chi^2(2)$，独立 $\Rightarrow F(1,2)$</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════ 正态总体抽样分布 ══════ -->
+<section id="p1b">
+<h2><span class="num">2</span>正态总体抽样分布（第3讲）</h2>
+
+<h3>2.1 学生定理（单个正态总体）</h3>
+<div class="card thm">
+<div class="card-label">定理（核心！）</div>
+<p>设 $X_1,\ldots,X_n$ i.i.d. $\sim N(\mu,\sigma^2)$，则：</p>
+<table class="ft">
+<tr><th>结论</th><th>公式</th><th>用途</th></tr>
+<tr><td>(a) $\bar X$ 的分布</td><td>$\bar X\sim N(\mu,\sigma^2/n)$</td><td>均值推断基础</td></tr>
+<tr><td>(b) 独立性</td><td>$\bar X$ 与 $S^2$ 相互独立</td><td>推导t分布的关键</td></tr>
+<tr><td>(c) $S^2$ 的分布</td><td>$\dfrac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)$</td><td>方差推断基础</td></tr>
+<tr><td>(d) T统计量</td><td>$T=\dfrac{\bar X-\mu}{S/\sqrt{n}}\sim t(n-1)$</td><td>$\sigma$未知时推断$\mu$</td></tr>
+</table>
+</div>
+<div class="card warn">
+<div class="card-label">⚠️ 易混淆点</div>
+<p>(c) 自由度是 $n-1$ 而非 $n$：估计均值消耗了1个自由度。</p>
+<p>$\sum(X_i-\bar X)^2/\sigma^2\sim\chi^2(n-1)$ vs $\sum(X_i-\mu)^2/\sigma^2\sim\chi^2(n)$（用已知 $\mu$ 不损失自由度）</p>
+</div>
+
+<h3>2.2 两个正态总体抽样分布</h3>
+<table class="ft">
+<tr><th>枢轴量</th><th>分布</th><th>条件</th></tr>
+<tr><td>$F=\dfrac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}$</td><td>$F(n_1-1,n_2-1)$</td><td>一般情况</td></tr>
+<tr><td>$\dfrac{(\bar X-\bar Y)-(\mu_1-\mu_2)}{\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}}$</td><td>$N(0,1)$</td><td>$\sigma_1^2,\sigma_2^2$ 已知</td></tr>
+<tr><td>$\dfrac{(\bar X-\bar Y)-(\mu_1-\mu_2)}{S_w\sqrt{1/n_1+1/n_2}}$</td><td>$t(n_1+n_2-2)$</td><td>$\sigma_1^2=\sigma_2^2$ 未知</td></tr>
+</table>
+<p>合并方差：$S_w^2=\dfrac{(n_1-1)S_1^2+(n_2-1)S_2^2}{n_1+n_2-2}$</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     PART 2: 参数估计（第3-4讲）
+══════════════════════════════════════ -->
+<section id="p2">
+<h2><span class="num">3</span>参数估计：矩估计 & MLE（第3-4讲）</h2>
+
+<h3>3.1 矩估计法</h3>
+<div class="card def">
+<div class="card-label">核心思路</div>
+<p>用<strong>样本矩</strong>替代<strong>总体矩</strong>，反解参数。</p>
+<div class="step"><div class="sn">1</div><div class="sb">写出 $\mu_k=E(X^k)=h_k(\theta_1,\ldots,\theta_p)$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">反解 $\theta_j=g_j(\mu_1,\ldots,\mu_p)$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">代入样本矩：$\hat\theta_j=g_j(A_1,\ldots,A_p)$</div></div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题2：矩估计 <span class="ex-tag">常规题</span></div>
+<div class="ex-body">
+<p class="ex-q">总体密度 $f(x;\theta)=\sqrt\theta\cdot x^{\sqrt\theta-1}$（$0\le x\le1$），求 $\theta$ 的矩估计量。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb">$\mu_1=E(X)=\int_0^1 x\cdot\sqrt\theta x^{\sqrt\theta-1}dx=\dfrac{\sqrt\theta}{\sqrt\theta+1}$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">反解：$\sqrt\theta=\dfrac{\mu_1}{1-\mu_1}$，故 $\theta=\left(\dfrac{\mu_1}{1-\mu_1}\right)^2$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">矩估计：$\hat\theta=\left(\dfrac{\bar X}{1-\bar X}\right)^2$</div></div>
+</div>
+</div>
+</div>
+
+<h3>3.2 极大似然估计（MLE）</h3>
+<div class="card def">
+<div class="card-label">核心步骤</div>
+<p>似然函数 $L(\theta)=\prod f(x_i;\theta)$，对数似然 $l(\theta)=\sum\log f(x_i;\theta)$</p>
+<p>MLE：$\hat\theta=\arg\max_\theta l(\theta)$，令 $\partial l/\partial\theta_k=0$ 解方程组。</p>
+</div>
+<div class="card tip">
+<div class="card-label">不变性原理</div>
+<p>若 $\hat\theta$ 是 $\theta$ 的MLE，则 $g(\hat\theta)$ 是 $g(\theta)$ 的MLE（无论 $g$ 是否单调）。</p>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题3：正态分布MLE <span class="ex-tag">重要！</span></div>
+<div class="ex-body">
+<p class="ex-q">$X\sim N(\mu,\sigma^2)$，$\mu,\sigma^2$ 均未知，求MLE。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<p>$l(\mu,\sigma^2)=-\frac{n}{2}\log(2\pi)-\frac{n}{2}\log\sigma^2-\frac{1}{2\sigma^2}\sum(x_i-\mu)^2$</p>
+<div class="step"><div class="sn">1</div><div class="sb">$\partial l/\partial\mu=0\Rightarrow\hat\mu=\bar x$（无偏）</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">$\partial l/\partial\sigma^2=0\Rightarrow\hat\sigma^2=\frac{1}{n}\sum(x_i-\bar x)^2=B_2$（<span class="red">有偏！分母是$n$</span>）</div></div>
+<p class="card warn" style="padding:6px 10px;margin-top:8px;">⚠️ 正态MLE中 $\hat\sigma^2=B_2$（有偏），无偏估计是 $S^2$（分母 $n-1$）。</p>
+</div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题4：均匀分布MLE（顺序统计量） <span class="ex-tag">特殊方法</span></div>
+<div class="ex-body">
+<p class="ex-q">$X\sim U[a,b]$，$a,b$ 均未知，求MLE及 $E(X)$ 的MLE。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<p>$L(a,b)=\frac{1}{(b-a)^n}$，要求 $a\le X_{(1)}$ 且 $b\ge X_{(n)}$。</p>
+<p>$1/(b-a)^n$ 关于 $a$ 递增（$a$ 越大越好），关于 $b$ 递减（$b$ 越小越好），约束下：</p>
+<p>$\hat a=X_{(1)}=\min X_i$，$\hat b=X_{(n)}=\max X_i$</p>
+<p>由不变性：$\widehat{E(X)}=(X_{(1)}+X_{(n)})/2$</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════ 估计量评价准则 ══════ -->
+<section id="p2b">
+<h2><span class="num">4</span>估计量评价准则（第4讲）</h2>
+
+<h3>4.1 无偏性</h3>
+<div class="card def">
+<div class="card-label">定义</div>
+<p>$\hat\theta$ 是 $\theta$ 的无偏估计 $\Longleftrightarrow$ $E(\hat\theta)=\theta$</p>
+</div>
+<table class="ft">
+<tr><th>估计量</th><th>估计对象</th><th>是否无偏</th><th>备注</th></tr>
+<tr><td>$\bar X$</td><td>$\mu$</td><td>✅ 无偏</td><td></td></tr>
+<tr><td>$S^2$（分母 $n-1$）</td><td>$\sigma^2$</td><td>✅ 无偏</td><td></td></tr>
+<tr><td>$B_2$（分母 $n$）</td><td>$\sigma^2$</td><td>❌ 有偏</td><td>$E(B_2)=\frac{n-1}{n}\sigma^2$</td></tr>
+<tr><td>$X_{(n)}$（$U[0,\theta]$）</td><td>$\theta$</td><td>❌ 有偏</td><td>$E(X_{(n)})=\frac{n}{n+1}\theta$，纠偏为 $\frac{n+1}{n}X_{(n)}$</td></tr>
+</table>
+<div class="card tip">
+<div class="card-label">纠偏公式</div>
+<p>若 $E(\hat\theta)=a\theta+b$（$a\ne0$），则 $(\hat\theta-b)/a$ 是 $\theta$ 的无偏估计。</p>
+</div>
+
+<h3>4.2 均方误差（MSE）= 方差 + 偏差²</h3>
+<div class="fbox">
+$$\text{MSE}(\hat\theta)=E(\hat\theta-\theta)^2=\text{Var}(\hat\theta)+[\underbrace{E(\hat\theta)-\theta}_{\text{偏差}}]^2$$
+</div>
+<div class="card warn">
+<div class="card-label">⚠️ Bias-Variance Tradeoff</div>
+<p>无偏 $\ne$ MSE最小！正态总体下 $\text{MSE}(S^2)=\frac{2\sigma^4}{n-1}$，$\text{MSE}(B_2)=\frac{2n-1}{n^2}\sigma^4$，当 $n>1$ 时 $\text{MSE}(B_2)<\text{MSE}(S^2)$。</p>
+<p>$B_2$ 有偏但MSE更小——有偏估计有时按MSE标准反而更优！</p>
+</div>
+
+<h3>4.3 有效性 & 相合性</h3>
+<div class="g2">
+<div class="card def">
+<div class="card-label">有效性</div>
+<p>两无偏估计中，方差更小者更有效。</p>
+<p>即 $\text{Var}(\hat\theta_1)\le\text{Var}(\hat\theta_2)$ 则 $\hat\theta_1$ 更有效。</p>
+</div>
+<div class="card def">
+<div class="card-label">相合性（一致性）</div>
+<p>$\hat\theta_n\xrightarrow{P}\theta$（$n\to\infty$）</p>
+<p>矩估计量和MLE在一般条件下均是相合的。</p>
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════
+     PART 3: 区间估计（第5讲）
+══════════════════════════════ -->
+<section id="p3">
+<h2><span class="num">5</span>区间估计（第5讲）</h2>
+
+<h3>5.1 置信区间概念</h3>
+<div class="card def">
+<div class="card-label">定义</div>
+<p>若 $P\{L<\theta<U\}=1-\alpha$，称 $(L,U)$ 为置信水平 $1-\alpha$ 的置信区间。</p>
+<p><strong>正确理解：</strong>$\theta$ 固定，$L,U$ 随机。"95%置信区间"表示反复抽样中约95%的区间包含 $\theta$，<span class="red">不是</span>某个具体区间有95%概率含 $\theta$。</p>
+</div>
+<div class="card tip">
+<div class="card-label">枢轴量法三步</div>
+<div class="step"><div class="sn">1</div><div class="sb">找枢轴量 $G$（含样本和 $\theta$，分布不含未知参数）</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">确定 $P(a<G<b)=1-\alpha$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">从 $a<G<b$ 反解出 $L<\theta<U$</div></div>
+</div>
+
+<h3>5.2 单个正态总体置信区间</h3>
+<table class="ft">
+<tr><th>参数</th><th>条件</th><th>枢轴量（分布）</th><th>双侧置信区间</th></tr>
+<tr><td>$\mu$</td><td>$\sigma^2$ 已知</td><td>$Z=\frac{\bar X-\mu}{\sigma_0/\sqrt{n}}\sim N(0,1)$</td><td>$\bar X\pm z_{\alpha/2}\cdot\sigma_0/\sqrt{n}$</td></tr>
+<tr><td>$\mu$</td><td>$\sigma^2$ 未知</td><td>$T=\frac{\bar X-\mu}{S/\sqrt{n}}\sim t(n-1)$</td><td>$\bar X\pm t_{\alpha/2}(n-1)\cdot S/\sqrt{n}$</td></tr>
+<tr><td>$\sigma^2$</td><td>$\mu$ 未知</td><td>$G=\frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)$</td><td>$\left(\dfrac{(n-1)S^2}{\chi^2_{\alpha/2}},\dfrac{(n-1)S^2}{\chi^2_{1-\alpha/2}}\right)$</td></tr>
+</table>
+
+<h3>5.3 两个正态总体置信区间</h3>
+<table class="ft">
+<tr><th>参数</th><th>条件</th><th>分布</th><th>置信区间</th></tr>
+<tr><td>$\mu_1-\mu_2$</td><td>方差已知</td><td>$N(0,1)$</td><td>$(\bar X-\bar Y)\pm z_{\alpha/2}\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}$</td></tr>
+<tr><td>$\mu_1-\mu_2$</td><td>方差未知相等</td><td>$t(n_1+n_2-2)$</td><td>$(\bar X-\bar Y)\pm t_{\alpha/2}\cdot S_w\sqrt{1/n_1+1/n_2}$</td></tr>
+<tr><td>$\sigma_1^2/\sigma_2^2$</td><td>均值未知</td><td>$F(n_1-1,n_2-1)$</td><td>$\left(\dfrac{S_1^2/S_2^2}{F_{\alpha/2}},\dfrac{S_1^2/S_2^2}{F_{1-\alpha/2}}\right)$</td></tr>
+</table>
+<div class="card key">
+<div class="card-label">记忆口诀</div>
+<p>$\sigma$ 已知→用 $z$；$\sigma$ 未知→用 $t$；估计方差→用 $\chi^2$；比较两方差→用 $F$</p>
+<p>置信水平 $\uparrow$ → 区间更宽；样本量 $\uparrow$ → 区间更窄；$\sigma$ $\uparrow$ → 区间更宽</p>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题5：$\sigma^2$ 未知时均值的置信区间 <span class="ex-tag">t检验配套</span></div>
+<div class="ex-body">
+<p class="ex-q">$n=16$，$\bar x=75$，$s=8$，$\sigma^2$ 未知，求 $\mu$ 的95%置信区间。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<p>$\sigma$ 未知，用 $t$ 分布。$\alpha=0.05$，$t_{0.025}(15)\approx2.131$</p>
+<p>$\text{CI}=\left(75-2.131\times\frac{8}{\sqrt{16}},\;75+2.131\times\frac{8}{\sqrt{16}}\right)=(75-4.26,75+4.26)=\mathbf{(70.74,\;79.26)}$</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════
+     PART 4: 假设检验（第6-7讲）
+══════════════════════════════════ -->
+<section id="p4">
+<h2><span class="num">6</span>假设检验（第6-7讲）</h2>
+
+<h3>6.1 基本概念</h3>
+<table class="ft">
+<tr><th>概念</th><th>说明</th></tr>
+<tr><td>原假设 $H_0$</td><td>需要保护的假设，不轻易拒绝</td></tr>
+<tr><td>备择假设 $H_1$</td><td>需要充足证据才接受</td></tr>
+<tr><td>第一类错误（弃真）</td><td>$H_0$ 真却拒绝，概率为 $\alpha$（显著水平）</td></tr>
+<tr><td>第二类错误（取伪）</td><td>$H_0$ 假却接受，概率为 $\beta$</td></tr>
+<tr><td>功效</td><td>$\gamma(\theta)=P_\theta(\text{拒绝}H_0)$，$\theta\in\omega_1$（越大越好）</td></tr>
+</table>
+<div class="card warn">
+<div class="card-label">两类错误的关系</div>
+<p>样本量固定时，$\alpha$ 减小则 $\beta$ 增大（鱼和熊掌不可兼得）。</p>
+<p><strong>Neyman-Pearson准则：</strong>先控制 $\alpha$（第一类错误），再最小化 $\beta$（最大化功效）。</p>
+</div>
+<div class="g2">
+<div class="card def">
+<div class="card-label">临界值法</div>
+<p>确定显著水平 $\alpha$ 对应的拒绝域，看样本统计量是否落入。</p>
+</div>
+<div class="card def">
+<div class="card-label">p值法</div>
+<p>$p$ 值 = $H_0$ 下比观测值"更极端"的概率。$p<\alpha$ 则拒绝 $H_0$。</p>
+</div>
+</div>
+
+<h3>6.2 单个正态总体均值检验</h3>
+<table class="ft">
+<tr><th>条件</th><th>统计量</th><th>$H_1:\mu\ne\mu_0$（双边）</th><th>$H_1:\mu<\mu_0$（左边）</th><th>$H_1:\mu>\mu_0$（右边）</th></tr>
+<tr><td>$\sigma$ 已知</td><td>$Z=\frac{\bar X-\mu_0}{\sigma_0/\sqrt{n}}\sim N(0,1)$</td><td>$|Z|\ge z_{\alpha/2}$</td><td>$Z\le-z_\alpha$</td><td>$Z\ge z_\alpha$</td></tr>
+<tr><td>$\sigma$ 未知</td><td>$T=\frac{\bar X-\mu_0}{S/\sqrt{n}}\sim t(n-1)$</td><td>$|T|\ge t_{\alpha/2}(n-1)$</td><td>$T\le-t_\alpha(n-1)$</td><td>$T\ge t_\alpha(n-1)$</td></tr>
+</table>
+
+<h3>6.3 方差检验（$\chi^2$ 检验）</h3>
+<p>检验统计量：$G=\frac{(n-1)S^2}{\sigma_0^2}\sim\chi^2(n-1)$（$H_0:\sigma^2=\sigma_0^2$ 下）</p>
+<table class="ft">
+<tr><th>类型</th><th>拒绝域</th></tr>
+<tr><td>双边</td><td>$G\le\chi^2_{1-\alpha/2}(n-1)$ 或 $G\ge\chi^2_{\alpha/2}(n-1)$</td></tr>
+<tr><td>左边</td><td>$G\le\chi^2_{1-\alpha}(n-1)$</td></tr>
+<tr><td>右边</td><td>$G\ge\chi^2_\alpha(n-1)$</td></tr>
+</table>
+
+<h3>6.4 两个正态总体检验</h3>
+<table class="ft">
+<tr><th>检验对象</th><th>条件</th><th>统计量</th><th>双边拒绝域</th></tr>
+<tr><td>$\mu_1=\mu_2$</td><td>方差已知</td><td>$Z\sim N(0,1)$</td><td>$|Z|\ge z_{\alpha/2}$</td></tr>
+<tr><td>$\mu_1=\mu_2$</td><td>方差未知相等</td><td>$T\sim t(n_1+n_2-2)$</td><td>$|T|\ge t_{\alpha/2}(n_1+n_2-2)$</td></tr>
+<tr><td>$\sigma_1^2=\sigma_2^2$</td><td>均值未知</td><td>$F=S_1^2/S_2^2\sim F(n_1-1,n_2-1)$</td><td>$F\le F_{1-\alpha/2}$ 或 $F\ge F_{\alpha/2}$</td></tr>
+</table>
+
+<h3>6.5 检验与置信区间的对偶关系</h3>
+<div class="card thm">
+<div class="card-label">定理</div>
+<p>置信水平 $1-\alpha$ 的双侧置信区间 $\Longleftrightarrow$ 显著水平 $\alpha$ 的双边检验的接受域。</p>
+<p><strong>实用：</strong>若 $\mu_0$ 落在 $\mu$ 的 $(1-\alpha)$ 置信区间内→接受 $H_0$；落在区间外→拒绝 $H_0$。</p>
+</div>
+
+<h3>6.6 拟合优度检验（$\chi^2$ 检验）</h3>
+<div class="card def">
+<div class="card-label">检验分布类型</div>
+<p>统计量：$Q=\sum_{i=1}^k\frac{(n_i-np_i)^2}{np_i}$，在 $H_0$ 下近似 $\sim\chi^2(k-1-r)$，$r$ 为估计参数个数。</p>
+<p>拒绝域：$Q\ge\chi^2_\alpha(k-1-r)$。要求每格理论频数 $np_i\ge5$。</p>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题6：t检验完整流程 <span class="ex-tag">必考题型</span></div>
+<div class="ex-body">
+<p class="ex-q">工厂称产品均值 $\mu_0=500$g，抽 $n=16$，$\bar x=498$，$s=4$，$\alpha=0.05$，双边检验。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb">$T=\frac{498-500}{4/\sqrt{16}}=\frac{-2}{1}=-2$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">查表：$t_{0.025}(15)=2.131$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">$|T|=2<2.131$，未落入拒绝域，<span class="green">接受 $H_0$</span>，无显著证据说明均值偏离500g。</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════
+     PART 5: ANOVA & 回归（第8讲）
+══════════════════════════════ -->
+<section id="p5">
+<h2><span class="num">7</span>单因素方差分析 & 一元线性回归（第8讲）</h2>
+
+<h3>7.1 单因素ANOVA模型</h3>
+<p>$r$ 个水平，$X_{ij}=\mu_i+\varepsilon_{ij}$，$\varepsilon_{ij}\sim N(0,\sigma^2)$ 独立，$n=\sum n_i$</p>
+<p>检验：$H_0:\mu_1=\cdots=\mu_r$ vs $H_1$：不全相等</p>
+
+<h3>7.2 平方和分解 $S_T=S_A+S_E$</h3>
+<table class="ft">
+<tr><th>名称</th><th>公式</th><th>自由度</th><th>均方</th></tr>
+<tr><td>总离差 $S_T$</td><td>$\sum_i\sum_j(X_{ij}-\bar X)^2$</td><td>$n-1$</td><td>—</td></tr>
+<tr><td>组间效应 $S_A$</td><td>$\sum_i n_i(\bar X_{i\cdot}-\bar X)^2$</td><td>$r-1$</td><td>$MS_A=S_A/(r-1)$</td></tr>
+<tr><td>组内误差 $S_E$</td><td>$\sum_i\sum_j(X_{ij}-\bar X_{i\cdot})^2$</td><td>$n-r$</td><td>$MS_E=S_E/(n-r)$</td></tr>
+</table>
+<div class="card thm">
+<div class="card-label">F检验</div>
+<p>$F=MS_A/MS_E\sim F(r-1,n-r)$（$H_0$ 下），拒绝域：$F\ge F_\alpha(r-1,n-r)$</p>
+<p>直觉：$H_1$ 成立时组间变异 $S_A$ 远大于组内误差 $S_E$，$F$ 值偏大；$H_0$ 成立时 $F\approx1$。</p>
+</div>
+
+<h3>7.3 一元线性回归</h3>
+<div class="card def">
+<div class="card-label">模型</div>
+<p>$y_i=\beta_0+\beta_1 x_i+\varepsilon_i$，$\varepsilon_i\sim N(0,\sigma^2)$ 独立</p>
+<p><strong>OLS估计（最小二乘）：</strong>$\hat\beta_1=\dfrac{s_{xy}}{s_{xx}}$，$\hat\beta_0=\bar y-\hat\beta_1\bar x$</p>
+<p>其中 $s_{xx}=\sum(x_i-\bar x)^2$，$s_{xy}=\sum(x_i-\bar x)(y_i-\bar y)$</p>
+<p><strong>$\sigma^2$ 无偏估计：</strong>$s^2=\frac{1}{n-2}\sum\hat\varepsilon_i^2$（分母 $n-2$，估计了 $\beta_0,\beta_1$ 两参数）</p>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     PART 6: Fisher信息量 & RCB（第9讲）
+══════════════════════════════════════════════ -->
+<section id="p6">
+<h2><span class="num">8</span>Fisher信息量（第9讲）</h2>
+
+<h3>8.1 定义与计算</h3>
+<div class="card def">
+<div class="card-label">Fisher信息量（单个观测）</div>
+$$I(\theta)=E\!\left[\left(\frac{\partial\log f(X;\theta)}{\partial\theta}\right)^{\!2}\right]$$
+<p>其中 $\partial\log f/\partial\theta$ 称为<strong>得分函数（score function）</strong>，满足 $E[\partial\log f/\partial\theta]=0$。</p>
+</div>
+<div class="card thm">
+<div class="card-label">三种等价计算公式（需正则条件R0–R3）</div>
+<div class="g3">
+<div><p><strong>方法一（直接）</strong></p>$$I(\theta)=E\!\left[\left(\frac{\partial\log f}{\partial\theta}\right)^{\!2}\right]$$</div>
+<div><p><strong>方法二（方差法）</strong></p>$$I(\theta)=\text{Var}\!\left(\frac{\partial\log f}{\partial\theta}\right)$$</div>
+<div><p><strong>方法三（负二阶导）</strong></p>$$I(\theta)=-E\!\left[\frac{\partial^2\log f}{\partial\theta^2}\right]$$</div>
+</div>
+<p class="card tip" style="padding:8px 12px;margin-top:10px;">⚡ <strong>考试首选方法三</strong>：对 $\log f$ 求二阶导，取负期望即得。</p>
+</div>
+<div class="card key">
+<div class="card-label">重要性质</div>
+<p>$n$ 个i.i.d.样本的联合Fisher信息量 $= n\cdot I(\theta)$</p>
+</div>
+
+<h3>8.2 常见分布 $I(\theta)$ 汇总</h3>
+<table class="ft">
+<tr><th>分布</th><th>参数</th><th>$\log f$（关键项）</th><th>$I(\theta)$</th></tr>
+<tr><td>Bernoulli$(\theta)$</td><td>$\theta\in(0,1)$</td><td>$x\log\theta+(1-x)\log(1-\theta)$</td><td>$\dfrac{1}{\theta(1-\theta)}$</td></tr>
+<tr><td>Poisson$(\theta)$</td><td>$\theta>0$</td><td>$x\log\theta-\theta-\log x!$</td><td>$\dfrac{1}{\theta}$</td></tr>
+<tr><td>$N(\theta,\sigma_0^2)$（$\sigma_0$已知）</td><td>$\theta\in\mathbb{R}$</td><td>$-\frac{(x-\theta)^2}{2\sigma_0^2}+C$</td><td>$\dfrac{1}{\sigma_0^2}$</td></tr>
+<tr><td>Exp$(1/\theta)$（均值$\theta$）</td><td>$\theta>0$</td><td>$-\log\theta-x/\theta$</td><td>$\dfrac{1}{\theta^2}$</td></tr>
+<tr><td>Laplace$(\theta)$</td><td>$\theta\in\mathbb{R}$</td><td>$-|x-\theta|-\log 2$</td><td>$1$</td></tr>
+<tr><td>Beta$(\theta,1)$</td><td>$\theta>0$</td><td>$\log\theta+(\theta-1)\log x$</td><td>$\dfrac{1}{\theta^2}$</td></tr>
+<tr><td>$\Gamma(\alpha_0,\theta)$（$\alpha_0$已知）</td><td>$\theta>0$</td><td>$-\alpha_0\log\theta-x/\theta+(\alpha_0-1)\log x$</td><td>$\dfrac{\alpha_0}{\theta^2}$</td></tr>
+</table>
+
+<div class="ex">
+<div class="ex-hd">例题7：三种方法计算Bernoulli的Fisher信息量 <span class="ex-tag">三法对比</span></div>
+<div class="ex-body">
+<p class="ex-q">$X\sim\text{Bernoulli}(\theta)$，用三种方法计算 $I(\theta)$。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<p>得分函数：$\partial\log f/\partial\theta=X/\theta-(1-X)/(1-\theta)$</p>
+<div class="step"><div class="sn">1</div><div class="sb"><strong>方法一：</strong>$I(\theta)=E\left[\left(\frac{X}{\theta}-\frac{1-X}{1-\theta}\right)^2\right]=\frac{1}{\theta^2(1-\theta)^2}\text{Var}(X)=\frac{\theta(1-\theta)}{\theta^2(1-\theta)^2}=\frac{1}{\theta(1-\theta)}$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><strong>方法二：</strong>$I(\theta)=\text{Var}\!\left(\frac{X}{\theta(1-\theta)}-\frac{1}{1-\theta}\right)=\frac{1}{\theta^2(1-\theta)^2}\text{Var}(X)=\frac{1}{\theta(1-\theta)}$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><strong>方法三（最快）：</strong>$\partial^2\log f/\partial\theta^2=-X/\theta^2-(1-X)/(1-\theta)^2$，故 $I(\theta)=-E[\cdots]=\frac{1}{\theta}+\frac{1}{1-\theta}=\frac{1}{\theta(1-\theta)}$</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════ RCB ══════ -->
+<section id="p6b">
+<h2><span class="num">9</span>Rao-Cramer下界与有效性（第9讲）</h2>
+
+<div class="card thm">
+<div class="card-label">定理（Rao-Cramer下界）</div>
+<p>设 $Y=u(X_1,\ldots,X_n)$，$E(Y)=k(\theta)$，则：</p>
+<div class="fbox">$$\text{Var}(Y)\ge\frac{[k'(\theta)]^2}{n\,I(\theta)}$$</div>
+<p>特别地，若 $Y$ 是 $\theta$ 的<strong>无偏估计</strong>（$k(\theta)=\theta$，$k'=1$）：$\text{Var}(Y)\ge\dfrac{1}{n\,I(\theta)}$</p>
+</div>
+
+<div class="card def">
+<div class="card-label">关键定义</div>
+<ul>
+<li><strong>有效估计量：</strong>无偏估计 $Y$ 使 $\text{Var}(Y)=1/[nI(\theta)]$（达到RCB）</li>
+<li><strong>有效性：</strong>$e(Y)=\dfrac{1/[nI(\theta)]}{\text{Var}(Y)}\in(0,1]$</li>
+<li><strong>渐近有效：</strong>$e(Y)\to1$（$n\to\infty$）</li>
+</ul>
+</div>
+
+<h3>哪些估计量达到RCB？</h3>
+<table class="ft">
+<tr><th>分布</th><th>MLE</th><th>$\text{Var}(\hat\theta)$</th><th>RCB $=1/(nI(\theta))$</th><th>是否有效</th></tr>
+<tr><td>Bernoulli$(\theta)$</td><td>$\bar X$</td><td>$\theta(1-\theta)/n$</td><td>$\theta(1-\theta)/n$</td><td>✅</td></tr>
+<tr><td>Poisson$(\theta)$</td><td>$\bar X$</td><td>$\theta/n$</td><td>$\theta/n$</td><td>✅</td></tr>
+<tr><td>$N(\theta,\sigma_0^2)$</td><td>$\bar X$</td><td>$\sigma_0^2/n$</td><td>$\sigma_0^2/n$</td><td>✅</td></tr>
+<tr><td>Beta$(\theta,1)$（纠偏后）</td><td>$\tilde\theta=(n-1)\hat\theta/n$</td><td>$\theta^2/(n-2)$</td><td>$\theta^2/n$</td><td>❌ 渐近有效</td></tr>
+</table>
+
+<div class="card warn">
+<div class="card-label">⚠️ 常见陷阱</div>
+<p>$n$ 个样本的RCB分母是 $n\cdot I(\theta)$，不是 $I(\theta)$！</p>
+<p>MLE有偏时需先纠偏再比较方差与RCB。</p>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题8：Beta分布的有效性分析 <span class="ex-tag">综合题</span></div>
+<div class="ex-body">
+<p class="ex-q">$X_1,\ldots,X_n\sim\text{Beta}(\theta,1)$，$f(x;\theta)=\theta x^{\theta-1}$。求 $I(\theta)$，分析纠偏后的估计量是否有效。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb"><strong>MLE：</strong>$\hat\theta=-n/\sum\log X_i$（令对数似然导数为零）</div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><strong>$I(\theta)$：</strong>$\partial^2\log f/\partial\theta^2=-1/\theta^2$，故 $I(\theta)=1/\theta^2$，RCB $=\theta^2/n$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><strong>分布：</strong>$-\log X_i\sim\Gamma(1,1/\theta)$，故 $-\sum\log X_i\sim\Gamma(n,1/\theta)$<br>$E(\hat\theta)=\frac{n}{n-1}\theta$（有偏），纠偏 $\tilde\theta=\frac{n-1}{n}\hat\theta$，则 $E(\tilde\theta)=\theta$</div></div>
+<div class="step"><div class="sn">4</div><div class="sb">$\text{Var}(\tilde\theta)=\frac{\theta^2}{n-2}>\frac{\theta^2}{n}=\text{RCB}$，<span class="red">不是有效估计</span>，但有效性 $=\frac{n-2}{n}\to1$，为渐近有效。</div></div>
+</div>
+</div>
+</div>
+
+<h3>多参数Fisher信息矩阵（第11讲）</h3>
+<div class="card def">
+<div class="card-label">定义</div>
+<p>$\theta=(\theta_1,\ldots,\theta_p)^\top$，Fisher信息矩阵 $\boldsymbol{I}(\theta)$ 的第 $(j,k)$ 元：</p>
+$$I_{jk}(\theta)=-E\!\left[\frac{\partial^2\log f}{\partial\theta_j\partial\theta_k}\right]$$
+<p><strong>多参数RCB：</strong>$\theta_j$ 的无偏估计 $Y_j$ 满足 $\text{Var}(Y_j)\ge[\boldsymbol{I}^{-1}(\theta)]_{jj}/n$</p>
+</div>
+<div class="card tip">
+<div class="card-label">正态分布 $N(\mu,v)$ 的Fisher矩阵</div>
+$$\boldsymbol{I}(\mu,v)=\begin{bmatrix}1/v&0\\0&1/(2v^2)\end{bmatrix},\quad\boldsymbol{I}^{-1}=\begin{bmatrix}v&0\\0&2v^2\end{bmatrix}$$
+<p>$\bar X$ 是 $\mu$ 的有效估计；$S^2$ 的有效性为 $(n-1)/n$（渐近有效）。</p>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PART 7: 三大检验（第10-11讲）
+══════════════════════════════════════════ -->
+<section id="p7">
+<h2><span class="num">10</span>似然比检验与三大渐近检验（第10-11讲）</h2>
+
+<h3>10.1 似然比检验（LRT）</h3>
+<div class="card def">
+<div class="card-label">定义</div>
+<p>检验 $H_0:\theta=\theta_0$ vs $H_1:\theta\ne\theta_0$，定义似然比：</p>
+$$\Lambda=\frac{L(\theta_0)}{L(\hat\theta)}\le1$$
+<p><strong>拒绝域：</strong>$\{\Lambda\le c\}$，直觉：$H_0$ 真时 $\Lambda\approx1$；$H_0$ 假时 $\Lambda\to0$。</p>
+</div>
+<div class="card thm">
+<div class="card-label">Wilks定理（渐近分布）</div>
+<p>单参数：$-2\log\Lambda\xrightarrow{D}\chi^2(1)$（$H_0$下）</p>
+<p>$p$维参数、$q$个约束：$-2\log\Lambda\xrightarrow{D}\chi^2(q)$（<span class="red">自由度=约束个数！</span>）</p>
+</div>
+
+<h3>10.2 三大渐近检验对比</h3>
+<div class="card def">
+<div class="card-label">三者均渐近 $\sim\chi^2(1)$，拒绝域均为 $\{\cdot\ge\chi^2_\alpha(1)\}$</div>
+<table class="ft">
+<tr><th>名称</th><th>统计量</th><th>计算需要</th><th>直觉</th></tr>
+<tr><td><strong>似然比（LRT）</strong></td><td>$\chi_L^2=2[l(\hat\theta)-l(\theta_0)]$</td><td>$\Omega$ 和 $H_0$ 下都求MLE</td><td>两个似然值之差</td></tr>
+<tr><td><strong>Wald型</strong></td><td>$\chi_W^2=nI(\hat\theta)(\hat\theta-\theta_0)^2$</td><td>只需 $\hat\theta$（无约束MLE）</td><td>MLE离 $\theta_0$ 多远</td></tr>
+<tr><td><strong>得分型（Score）</strong></td><td>$\chi_R^2=\dfrac{[\ell'(\theta_0)]^2}{nI(\theta_0)}$</td><td>只在 $\theta_0$ 处计算</td><td>$\theta_0$ 处得分有多大</td></tr>
+</table>
+</div>
+<div class="card tip">
+<div class="card-label">💡 选哪种方法？</div>
+<ul>
+<li><strong>LRT</strong>：最通用，需同时在两个空间求MLE。</li>
+<li><strong>Wald</strong>：只需无约束MLE，计算最简便。</li>
+<li><strong>Score</strong>：不需要求MLE，直接在 $\theta_0$ 处计算，适合 $H_0$ 下计算简单的情形。</li>
+</ul>
+</div>
+
+<div class="card tip">
+<div class="card-label">🔑 LRT计算步骤</div>
+<div class="step"><div class="sn">1</div><div class="sb">在 $\Omega$（无约束）下求 $\hat\theta$，计算 $l(\hat\theta)$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">在 $\omega$（$H_0$约束）下求 $\hat\theta_0$，计算 $l(\hat\theta_0)$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">$\chi_L^2=2[l(\hat\theta)-l(\hat\theta_0)]$，对比 $\chi^2_\alpha(q)$</div></div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题9：正态分布（方差未知）均值检验→导出t检验 <span class="ex-tag">重要推导</span></div>
+<div class="ex-body">
+<p class="ex-q">$X_1,\ldots,X_n\sim N(\mu,\sigma^2)$，$\sigma^2$未知，LRT检验 $H_0:\mu=\mu_0$ vs $H_1:\mu\ne\mu_0$。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb"><strong>无约束MLE：</strong>$\hat\mu=\bar X$，$\hat\sigma^2=\frac{1}{n}\sum(X_i-\bar X)^2$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><strong>$H_0$下MLE：</strong>$\hat\mu_0=\mu_0$，$\hat\sigma_0^2=\frac{1}{n}\sum(X_i-\mu_0)^2$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">$$\Lambda=\left(\frac{\hat\sigma^2}{\hat\sigma_0^2}\right)^{n/2}=\left(\frac{\sum(X_i-\bar X)^2}{\sum(X_i-\mu_0)^2}\right)^{n/2}$$</div></div>
+<div class="step"><div class="sn">4</div><div class="sb">利用 $\sum(X_i-\mu_0)^2=\sum(X_i-\bar X)^2+n(\bar X-\mu_0)^2$，化简得：$\{\Lambda\le c\}\Longleftrightarrow\left|\dfrac{\bar X-\mu_0}{S/\sqrt{n}}\right|\ge c_2$，即<span class="red">$t$检验！</span></div></div>
+</div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题10：指数分布LRT <span class="ex-tag">经典例题</span></div>
+<div class="ex-body">
+<p class="ex-q">$X_1,\ldots,X_n\sim\text{Exp}(1/\theta)$（均值$\theta$），检验 $H_0:\theta=\theta_0$ vs $H_1:\theta\ne\theta_0$。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb">$L(\theta)=\theta^{-n}e^{-n\bar X/\theta}$，MLE：$\hat\theta=\bar X$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">$\Lambda=e^n(\bar X/\theta_0)^ne^{-n\bar X/\theta_0}$，令 $g(t)=t^ne^{-nt}$，$\Lambda=e^ng(\bar X/\theta_0)$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">$g$ 在 $t=1$ 处取最大，$\{\Lambda\le c\}\Leftrightarrow\{\bar X/\theta_0\le c_1\}\cup\{\bar X/\theta_0\ge c_2\}$</div></div>
+<div class="step"><div class="sn">4</div><div class="sb">$H_0$下 $2\sum X_i/\theta_0\sim\chi^2(2n)$，精确拒绝域：$\left\{\frac{2\sum X_i}{\theta_0}\le\chi^2_{1-\alpha/2}(2n)\right\}\cup\left\{\frac{2\sum X_i}{\theta_0}\ge\chi^2_{\alpha/2}(2n)\right\}$</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════ 多参数 ══════ -->
+<section id="p7b">
+<h2><span class="num">11</span>多参数检验（第11讲）</h2>
+
+<div class="card def">
+<div class="card-label">含 $q$ 个约束的一般LRT</div>
+<p>$H_0:\theta\in\omega$（$q$ 个约束）vs $H_1:\theta\in\Omega\setminus\omega$</p>
+$$\Lambda=\frac{\max_{\theta\in\omega}L(\theta)}{\max_{\theta\in\Omega}L(\theta)},\quad-2\log\Lambda\xrightarrow{D}\chi^2(q)$$
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题11：单因素ANOVA→从LRT导出F检验 <span class="ex-tag">重要推导</span></div>
+<div class="ex-body">
+<p class="ex-q">$r$ 个独立正态总体 $N(\mu_i,\sigma^2)$，检验 $H_0:\mu_1=\cdots=\mu_r$，说明LRT如何给出F检验。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb"><strong>无约束MLE：</strong>$\hat\mu_i=\bar X_{i\cdot}$，$\tilde\sigma^2=S_E/n$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><strong>$H_0$下MLE：</strong>$\hat\mu=\bar X$，$\tilde\sigma'^2=S_T/n$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">$\chi_L^2=n\log(S_T/S_E)=n\log(1+S_A/S_E)$</div></div>
+<div class="step"><div class="sn">4</div><div class="sb">$\{\chi_L^2\ge c\}\Leftrightarrow\{S_A/S_E\ge c'\}\Leftrightarrow\left\{F=\frac{S_A/(r-1)}{S_E/(n-r)}\ge F_\alpha(r-1,n-r)\right\}$，约束数 $q=r-1$。</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PART 8: 完备性 & 指数族 & MVUE（第13-14讲）
+══════════════════════════════════════════════ -->
+<section id="p8">
+<h2><span class="num">12</span>完备性（第13讲）</h2>
+
+<h3>12.1 问题引入</h3>
+<div class="card warn">
+<div class="card-label">⚠️ 充分统计量的函数不一定是MVUE</div>
+<p><strong>例：</strong>$X_i\sim U[\theta,\theta+1]$，联合充分统计量 $(X_{(1)},X_{(n)})$ 给出两个无偏估计：$X_{(1)}-\frac{1}{n+1}$ 和 $X_{(n)}-\frac{n}{n+1}$，它们方差相同，均<span class="red">不是</span>MVUE（不唯一）。</p>
+<p>需要更强条件——<strong>完备性</strong>——才能保证无偏估计的唯一性。</p>
+</div>
+
+<h3>12.2 完备性定义</h3>
+<div class="card def">
+<div class="card-label">定义（完备族）</div>
+<p>对任意函数 $u(\cdot)$：</p>
+$$E_\theta[u(Z)]=0,\;\forall\theta\in\Omega\quad\Longrightarrow\quad P_\theta[u(Z)=0]=1,\;\forall\theta$$
+<p>直觉：期望恒为零 $\Rightarrow$ 函数本身几乎处处为零（没有"信息抵消"的多余部分）。</p>
+</div>
+
+<h3>12.3 Lehmann-Scheffe 定理（核心！）</h3>
+<div class="card thm">
+<div class="card-label">定理</div>
+<p>若 $Y_1$ 是 $\theta$ 的<strong>完备充分统计量（CSS）</strong>，$\varphi(Y_1)$ 是 $g(\theta)$ 的无偏估计，则 $\varphi(Y_1)$ 是 $g(\theta)$ 的<strong>唯一MVUE</strong>。</p>
+</div>
+<div class="card tip">
+<div class="card-label">Rao-Blackwell 定理（改进工具）</div>
+<p>若 $T$ 是 $g(\theta)$ 的无偏估计，$Y_1$ 是充分统计量，则 $E(T|Y_1)$ 也是 $g(\theta)$ 的无偏估计，且 $\text{Var}(E(T|Y_1))\le\text{Var}(T)$（不增加方差）。</p>
+<p>若 $Y_1$ 还是CSS，则 $E(T|Y_1)$ 就是唯一MVUE。</p>
+</div>
+
+<div class="card key">
+<div class="card-label">三个定理的配合关系</div>
+<div class="tree">
+<div class="root-node">寻找MVUE的逻辑链</div>
+<div class="tr">Neyman因子分解定理 → 找充分统计量 $Y_1$</div>
+<div class="tr">Rao-Blackwell定理 → 用 $E(T|Y_1)$ 改进任意无偏估计</div>
+<div class="tr">Lehmann-Scheffe定理 → 若 $Y_1$ 是CSS，则改进结果是唯一MVUE</div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题12：验证均匀分布 $U[0,\theta]$ 的CSS <span class="ex-tag">完备性验证</span></div>
+<div class="ex-body">
+<p class="ex-q">$X_1,\ldots,X_n\sim U[0,\theta]$，证明 $Y=X_{(n)}=\max X_i$ 是CSS，并求 $\theta$ 的MVUE。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb"><strong>充分性：</strong>$L(\theta)=(1/\theta)^nI_{\{X_{(n)}\le\theta\}}$，由Neyman分解定理，$Y=X_{(n)}$ 是充分统计量。</div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><strong>$Y$ 的分布：</strong>$g(y;\theta)=ny^{n-1}/\theta^n$，$0\le y\le\theta$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><strong>完备性验证：</strong>设 $E\{u(Y)\}=\int_0^\theta u(t)\cdot nt^{n-1}/\theta^n\,dt=0$ 对所有 $\theta>0$ 成立，则 $\int_0^\theta u(t)t^{n-1}dt=0$，对 $\theta$ 求导得 $u(\theta)\theta^{n-1}=0$，因 $\theta>0$ 故 $u(\theta)\equiv0$。$Y$ 是CSS。$\square$</div></div>
+<div class="step"><div class="sn">4</div><div class="sb"><strong>MVUE：</strong>$E(Y)=n\theta/(n+1)$，纠偏：$\hat\theta=\dfrac{n+1}{n}X_{(n)}$ 是 $\theta$ 的唯一MVUE。</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════ 指数分布类 ══════ -->
+<section id="p8b">
+<h2><span class="num">13</span>正则指数分布类（第13-14讲）</h2>
+
+<h3>13.1 定义</h3>
+<div class="card def">
+<div class="card-label">正则指数分布类（单参数）</div>
+<p>若 $X$ 的密度可写成：</p>
+$$f(x;\theta)=\exp\{p(\theta)K(x)+H(x)+q(\theta)\},\quad x\in S$$
+<p>且：① 支撑 $S$ 与 $\theta$ 无关；② $p(\theta)$ 连续且非常数；③ $K'(x)\not\equiv0$（连续型）或 $K(x)$ 非平凡（离散型），则属于<strong>正则指数分布类</strong>。</p>
+</div>
+
+<h3>13.2 核心定理</h3>
+<div class="card thm">
+<div class="card-label">定理</div>
+<p>$X_1,\ldots,X_n$ 来自正则指数分布类，则：</p>
+<p>① $Y_1=\sum_{i=1}^nK(X_i)$ 是 $\theta$ 的<strong>完备充分统计量（CSS）</strong></p>
+<p>② $E(Y_1)=-nq'(\theta)/p'(\theta)$</p>
+<p>③ $\text{Var}(Y_1)=n\{p''(\theta)q'(\theta)-q''(\theta)p'(\theta)\}/[p'(\theta)]^3$</p>
+</div>
+
+<h3>13.3 常见分布归类表（必记！）</h3>
+<table class="ft">
+<tr><th>分布</th><th>$p(\theta)$</th><th>$K(x)$</th><th>$q(\theta)$</th><th>CSS $Y_1=\sum K(X_i)$</th><th>是否属于</th></tr>
+<tr><td>$N(\theta,\sigma_0^2)$（$\sigma_0$已知）</td><td>$\theta/\sigma_0^2$</td><td>$x$</td><td>$-\theta^2/(2\sigma_0^2)$</td><td>$\sum X_i$（$\equiv\bar X$）</td><td>✅</td></tr>
+<tr><td>Bernoulli$(\theta)$</td><td>$\log\frac{\theta}{1-\theta}$</td><td>$x$</td><td>$\log(1-\theta)$</td><td>$\sum X_i$</td><td>✅</td></tr>
+<tr><td>Bin$(n_0,\theta)$（$n_0$已知）</td><td>$\log\frac{\theta}{1-\theta}$</td><td>$x$</td><td>$n_0\log(1-\theta)$</td><td>$\sum X_i$</td><td>✅</td></tr>
+<tr><td>Po$(\theta)$</td><td>$\log\theta$</td><td>$x$</td><td>$-\theta$</td><td>$\sum X_i$</td><td>✅</td></tr>
+<tr><td>Exp$(\theta)$（率参数）</td><td>$-\theta$</td><td>$x$</td><td>$\log\theta$</td><td>$\sum X_i$</td><td>✅</td></tr>
+<tr><td>$\Gamma(\theta,\beta_0)$（$\beta_0$已知）</td><td>$\theta-1$</td><td>$\log x$</td><td>$-\log\Gamma(\theta)-\theta\log\beta_0$</td><td>$\sum\log X_i$</td><td>✅</td></tr>
+<tr><td>$U[0,\theta]$</td><td colspan="5" style="color:var(--red);font-weight:700;">❌ 不属于！支撑集 $[0,\theta]$ 依赖参数 $\theta$</td></tr>
+<tr><td>$N(\mu,\theta)$（$\mu$已知，估计方差）</td><td>$-1/(2\theta)$</td><td>$(x-\mu)^2$</td><td>$-\frac{1}{2}\log\theta$</td><td>$\sum(X_i-\mu)^2$</td><td>✅</td></tr>
+</table>
+
+<div class="card warn">
+<div class="card-label">⚠️ 不属于正则指数分布类的判断</div>
+<p>只要<strong>支撑集依赖参数</strong>，就不属于正则指数分布类。例如：$U[0,\theta]$，$U[\theta,\theta+1]$，截断分布等。但注意：$U[0,\theta]$ 的 $X_{(n)}$ 仍然是CSS（需直接验证完备性）。</p>
+</div>
+
+<h3>13.4 多参数指数分布类（第14讲）</h3>
+<div class="card def">
+<div class="card-label">多参数情形</div>
+<p>$f(x;\theta)=\exp\left\{\sum_{j=1}^mp_j(\theta)K_j(x)+H(x)+q(\theta)\right\}$</p>
+<p>联合完备充分统计量：$Y_j=\sum_{i=1}^nK_j(X_i)$，$j=1,\ldots,m$</p>
+<p><strong>例：</strong>$N(\theta_1,\theta_2)$（双参数），CSS为 $(\sum X_i,\sum X_i^2)$，等价地为 $(\bar X, S^2)$。</p>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题13：验证属于指数分布类，找CSS <span class="ex-tag">步骤完整</span></div>
+<div class="ex-body">
+<p class="ex-q">$X_1,\ldots,X_n\sim\text{Po}(\theta)$：① 验证属于正则指数分布类；② 找CSS；③ 求 $\theta^2$ 的MVUE。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb">$f(x;\theta)=\frac{\theta^xe^{-\theta}}{x!}=\exp\{x\log\theta-\theta-\log x!\}$，对应 $p(\theta)=\log\theta$（连续非常数），$K(x)=x$，$H(x)=-\log x!$，$q(\theta)=-\theta$，支撑 $\{0,1,2,\ldots\}$ 与 $\theta$ 无关。✅ 属于正则指数分布类。</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">CSS：$Y_1=\sum X_i\sim\text{Po}(n\theta)$（等价地 $\bar X=Y_1/n$ 也是CSS）</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">$E(Y_1^2)=\text{Var}(Y_1)+[E(Y_1)]^2=n\theta+(n\theta)^2$，故 $E(\bar X^2)=\theta/n+\theta^2$。<br>则 $\bar X^2-\bar X/n$ 是 $\theta^2$ 的无偏估计，由Lehmann-Scheffe定理，是唯一<span class="red">MVUE</span>。</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════ MVUE ══════ -->
+<section id="p8c">
+<h2><span class="num">14</span>MVUE的两种求法（第14讲）</h2>
+
+<div class="card key">
+<div class="card-label">🗺️ 两种方法对比</div>
+<div class="cmp">
+<div class="cmp-col">
+<div class="cmp-hd">方法一：Lehmann-Scheffe（直接法）</div>
+<p>① 找CSS $Y_1$</p>
+<p>② 求 $E[\varphi(Y_1)]=g(\theta)$，解出 $\varphi$（先猜测，通常是MLE或矩估计加纠偏）</p>
+<p>③ $\varphi(Y_1)$ 即为唯一MVUE</p>
+</div>
+<div class="cmp-col">
+<div class="cmp-hd">方法二：Rao-Blackwell（条件期望法）</div>
+<p>① 找一个简单的无偏估计 $T$</p>
+<p>② 计算条件期望 $E(T|Y_1)$</p>
+<p>③ $E(T|Y_1)$ 即为MVUE，与方法一结果相同</p>
+</div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题14：Bernoulli分布 $\delta=\theta(1-\theta)$ 的MVUE <span class="ex-tag">两法对比</span></div>
+<div class="ex-body">
+<p class="ex-q">$X_1,\ldots,X_n\sim\text{Bernoulli}(\theta)$，用两种方法求 $\delta=\theta(1-\theta)$ 的MVUE。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<p>CSS：$Y=\sum X_i\sim\text{Bin}(n,\theta)$</p>
+<p><strong>方法一（L-S直接法）：</strong></p>
+<div class="step"><div class="sn">1</div><div class="sb">$\delta$ 的MLE为 $\tilde\delta=(Y/n)(1-Y/n)$，计算其期望：$E(\tilde\delta)=\frac{n-1}{n}\theta(1-\theta)$（有偏）</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">纠偏：$\hat\delta=\dfrac{n}{n-1}\tilde\delta=\dfrac{Y(n-Y)}{n(n-1)}$ 是 $\delta$ 的MVUE。</div></div>
+<p><strong>方法二（Rao-Blackwell）：</strong></p>
+<div class="step"><div class="sn">3</div><div class="sb">令 $T=\frac{1}{2}I_{\{X_1+X_2=1\}}$，则 $E(T)=\theta(1-\theta)=\delta$（无偏）</div></div>
+<div class="step"><div class="sn">4</div><div class="sb">$E(T|Y=y)=\frac{1}{2}P(X_1+X_2=1|Y=y)=\dfrac{\binom{n-2}{y-1}}{\binom{n}{y}}=\dfrac{y(n-y)}{n(n-1)}$，与方法一一致。✓</div></div>
+</div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题15：正态分布中 $\theta^2$ 的MVUE <span class="ex-tag">条件期望计算</span></div>
+<div class="ex-body">
+<p class="ex-q">$X_1,\ldots,X_n\sim N(\theta,1)$，求 $\theta^2$ 的MVUE。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb">CSS：$\bar X$（来自正则指数分布类，$K(x)=x$）</div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><strong>方法一：</strong>$E(\bar X^2)=\theta^2+1/n$，故 $\bar X^2-1/n$ 是 $\theta^2$ 的无偏估计，即为唯一MVUE。</div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><strong>方法二验证：</strong>取 $T=X_1^2-1$（因 $E(X_1^2)=\theta^2+1$），已知 $X_1|\bar X\sim N(\bar X,(n-1)/n)$，故 $E(T|\bar X)=\bar X^2+(n-1)/n-1=\bar X^2-1/n$，与方法一一致。✓</div></div>
+</div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">例题16：均匀分布中任意 $g(\theta)$ 的MVUE公式 <span class="ex-tag">通用公式推导</span></div>
+<div class="ex-body">
+<p class="ex-q">$X_i\sim U[0,\theta]$，CSS为 $Y=X_{(n)}$，推导可微函数 $g(\theta)$ 的MVUE的通用公式。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb">设MVUE为 $u(Y)$，要求 $E\{u(Y)\}=\int_0^\theta u(t)\frac{nt^{n-1}}{\theta^n}dt=g(\theta)$，即 $\theta^ng(\theta)=\int_0^\theta u(t)nt^{n-1}dt$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb">两边对 $\theta$ 求导：$n\theta^{n-1}g(\theta)+\theta^ng'(\theta)=nu(\theta)\theta^{n-1}$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">解得通用公式：$u(\theta)=g(\theta)+\dfrac{\theta g'(\theta)}{n}$，故 $g(\theta)$ 的MVUE为 $g(Y)+\dfrac{Yg'(Y)}{n}$</div></div>
+<div class="step"><div class="sn">4</div><div class="sb"><strong>验证：</strong>取 $g(\theta)=\theta$，$g'=1$，则MVUE $=Y+Y/n=\frac{n+1}{n}Y$，与前面结果一致。✓</div></div>
+</div>
+</div>
+</div>
+
+<h3>14.2 最小充分统计量与从属统计量</h3>
+<div class="g2">
+<div class="card def">
+<div class="card-label">最小充分统计量</div>
+<p>能被任何其他充分统计量表示为其函数的充分统计量（信息最"浓缩"）。</p>
+<p>完备充分统计量一定是最小充分统计量（反之不然）。</p>
+</div>
+<div class="card def">
+<div class="card-label">从属统计量（Ancillary）</div>
+<p>分布与参数 $\theta$ 完全无关的统计量。</p>
+<p>例：$N(\theta,1)$ 中，$S^2$，$X_2-X_1$，$X_1-\bar X$ 均为从属统计量。</p>
+</div>
+</div>
+<table class="ft">
+<tr><th>分布</th><th>最小充分统计量（MLE）</th><th>是否完备（CSS）</th></tr>
+<tr><td>$N(\theta,\sigma_0^2)$，$\sigma_0$ 已知</td><td>$\bar X$</td><td>✅ CSS</td></tr>
+<tr><td>$N(\mu,\sigma^2)$，双参数</td><td>$(\bar X,S^2)$</td><td>✅ CSS</td></tr>
+<tr><td>Po$(\theta)$</td><td>$\bar X$</td><td>✅ CSS</td></tr>
+<tr><td>$U[0,\theta]$</td><td>$X_{(n)}$</td><td>✅ CSS</td></tr>
+<tr><td>$U[\theta-1,\theta+1]$</td><td>$(\min X_i,\max X_i)$</td><td>❌ 非CSS</td></tr>
+</table>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PART 9: 综合例题（跨章节）
+══════════════════════════════════════════════ -->
+<section id="p9">
+<h2><span class="num">15</span>综合例题精讲（跨章节）</h2>
+
+<div class="ex">
+<div class="ex-hd">综合题1：Poisson分布的三大渐近检验统计量 <span class="ex-tag">三检验对比</span></div>
+<div class="ex-body">
+<p class="ex-q">$X_1,\ldots,X_n\sim\text{Po}(\theta)$，写出检验 $H_0:\theta=\theta_0$ 的三种渐近检验统计量。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<p>MLE：$\hat\theta=\bar X$；$I(\theta)=1/\theta$</p>
+<div class="step"><div class="sn">1</div><div class="sb"><strong>LRT：</strong>$l(\hat\theta)=n\bar X\log\bar X-n\bar X-\sum\log X_i!$，$l(\theta_0)=n\bar X\log\theta_0-n\theta_0-\sum\log X_i!$<br>$\chi_L^2=2n[\bar X\log(\bar X/\theta_0)-(\bar X-\theta_0)]$</div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><strong>Wald：</strong>$\chi_W^2=nI(\hat\theta)(\hat\theta-\theta_0)^2=\dfrac{n(\bar X-\theta_0)^2}{\bar X}$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><strong>Score：</strong>$\ell'(\theta_0)=\sum X_i/\theta_0-n=n(\bar X-\theta_0)/\theta_0$<br>$\chi_R^2=\dfrac{[\ell'(\theta_0)]^2}{nI(\theta_0)}=\dfrac{n(\bar X-\theta_0)^2}{\theta_0}$</div></div>
+<p style="margin-top:8px;">三者均在 $H_0$ 下 $\xrightarrow{D}\chi^2(1)$，渐近拒绝域 $\{\cdot\ge\chi^2_\alpha(1)\}$。注意 Wald 分母是 $\bar X$，Score 分母是 $\theta_0$。</p>
+</div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">综合题2：$S^2$ 与 $B_2$ 的MSE比较（正态总体） <span class="ex-tag">偏差-方差权衡</span></div>
+<div class="ex-body">
+<p class="ex-q">正态总体下，比较 $S^2$ 和 $B_2$ 的MSE，说明哪个按MSE准则更优。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb"><strong>$S^2$（无偏）：</strong>$\text{MSE}(S^2)=\text{Var}(S^2)=\dfrac{2\sigma^4}{n-1}$（利用 $(n-1)S^2/\sigma^2\sim\chi^2(n-1)$，$\text{Var}[\chi^2(n-1)]=2(n-1)$）</div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><strong>$B_2$（有偏，$B_2=\frac{n-1}{n}S^2$）：</strong><br>偏差 $=E(B_2)-\sigma^2=\frac{n-1}{n}\sigma^2-\sigma^2=-\frac{\sigma^2}{n}$<br>$\text{MSE}(B_2)=\frac{(n-1)^2}{n^2}\cdot\frac{2\sigma^4}{n-1}+\frac{\sigma^4}{n^2}=\frac{2(n-1)\sigma^4}{n^2}+\frac{\sigma^4}{n^2}=\frac{(2n-1)\sigma^4}{n^2}$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">$\text{MSE}(S^2)-\text{MSE}(B_2)=\frac{2\sigma^4}{n-1}-\frac{(2n-1)\sigma^4}{n^2}=\frac{2n^2-2n-(2n^2-3n+1)}{n^2(n-1)}\sigma^4=\frac{n-1}{n^2(n-1)}\sigma^4=\frac{\sigma^4}{n^2}>0$<br>故 $\text{MSE}(S^2)>\text{MSE}(B_2)$，按MSE准则 <span class="red">$B_2$ 更优</span>（$S^2$ 虽然无偏，但整体误差更大）。</div></div>
+</div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-hd">综合题3：总统选举例——多参数LRT <span class="ex-tag">多参数约束</span></div>
+<div class="ex-body">
+<p class="ex-q">三候选人选举，参数 $p=(p_1,p_2)^\top$，$p_3=1-p_1-p_2$。检验 $H_0:p_1=p_2$，写出 $\chi_L^2$ 统计量。</p>
+<button class="sol-btn" onclick="toggleSol(this)">查看解答 ▼</button>
+<div class="sol">
+<div class="step"><div class="sn">1</div><div class="sb"><strong>无约束MLE：</strong>$\hat p_j=T_j/n$（$T_j=\sum X_{ji}$，各候选票数之比）</div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><strong>$H_0$下MLE：</strong>$p_1=p_2=p$，$\hat p=\frac{T_1+T_2}{2n}=\frac{\hat p_1+\hat p_2}{2}$</div></div>
+<div class="step"><div class="sn">3</div><div class="sb">$$\chi_L^2=2T_1\log\frac{2\hat p_1}{\hat p_1+\hat p_2}+2T_2\log\frac{2\hat p_2}{\hat p_1+\hat p_2}$$</div></div>
+<div class="step"><div class="sn">4</div><div class="sb">约束个数 $q=1$（一个等式约束），渐近拒绝域：$\{\chi_L^2>\chi^2_\alpha(1)\}$</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PART 10: 考前速查表
+══════════════════════════════════════════════ -->
+<section id="p10">
+<h2><span class="num">16</span>考前速查表 ⚡</h2>
+
+<h3>遇题决策树</h3>
+<table class="ft">
+<tr><th>题目关键词</th><th>涉及知识点</th><th>核心公式 / 方法</th></tr>
+<tr><td>"三大分布" / 识别分布</td><td>$\chi^2$，$t$，$F$ 定义</td><td>$\chi^2$=平方和；$t$=$N/\sqrt{\chi^2/n}$；$F$=$\chi^2/\chi^2$之比</td></tr>
+<tr><td>"抽样分布" / 正态总体</td><td>学生定理</td><td>$\frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)$；$\frac{\bar X-\mu}{S/\sqrt{n}}\sim t(n-1)$</td></tr>
+<tr><td>"矩估计"</td><td>矩法</td><td>令 $A_k=\mu_k$，反解参数</td></tr>
+<tr><td>"MLE" / "极大似然"</td><td>对数似然，偏导=0</td><td>$\partial l/\partial\theta_k=0$；不变性：$g(\hat\theta)$是$g(\theta)$的MLE</td></tr>
+<tr><td>"无偏" / "纠偏"</td><td>无偏性</td><td>$E(\hat\theta)=a\theta+b\Rightarrow(\hat\theta-b)/a$无偏</td></tr>
+<tr><td>"MSE" / "均方误差"</td><td>偏差-方差分解</td><td>$\text{MSE}=\text{Var}+\text{偏差}^2$</td></tr>
+<tr><td>"置信区间"</td><td>枢轴量法</td><td>$\sigma$已知→$z$；$\sigma$未知→$t$；估计$\sigma^2$→$\chi^2$；比较→$F$</td></tr>
+<tr><td>"假设检验"</td><td>z/t/$\chi^2$/F检验</td><td>构造枢轴统计量，在$H_0$下求分布，定拒绝域</td></tr>
+<tr><td>"p值"</td><td>假设检验</td><td>$p<\alpha$拒绝$H_0$；双边$p=2[1-\Phi(|z_0|)]$</td></tr>
+<tr><td>"ANOVA" / "方差分析"</td><td>$F$检验，平方和分解</td><td>$S_T=S_A+S_E$；$F=MS_A/MS_E\sim F(r-1,n-r)$</td></tr>
+<tr><td>"Fisher信息量"</td><td>得分函数，负二阶导</td><td>$I(\theta)=-E[\partial^2\log f/\partial\theta^2]$；$n$个样本时乘$n$</td></tr>
+<tr><td>"达到RCB" / "有效估计"</td><td>Rao-Cramer下界</td><td>$\text{Var}(Y)\ge[k'(\theta)]^2/(nI(\theta))$；无偏时$\ge1/(nI(\theta))$</td></tr>
+<tr><td>"LRT" / "似然比检验"</td><td>Wilks定理</td><td>$\chi_L^2=2[l(\hat\theta)-l(\hat\theta_0)]\to\chi^2(q)$，$q$=约束数</td></tr>
+<tr><td>"Wald检验"</td><td>渐近正态性</td><td>$\chi_W^2=nI(\hat\theta)(\hat\theta-\theta_0)^2$</td></tr>
+<tr><td>"Score检验" / "得分检验"</td><td>得分函数</td><td>$\chi_R^2=[\ell'(\theta_0)]^2/(nI(\theta_0))$</td></tr>
+<tr><td>"指数分布类" / "属于指数族"</td><td>正则指数分布类</td><td>写成 $\exp\{p(\theta)K(x)+H(x)+q(\theta)\}$；支撑不依赖$\theta$</td></tr>
+<tr><td>"完备充分统计量" / "CSS"</td><td>完备性</td><td>指数族中 $\sum K(X_i)$ 自动是CSS；支撑依赖$\theta$需直接验证</td></tr>
+<tr><td>"MVUE"</td><td>L-S定理 + R-B定理</td><td>方法一：纠偏CSS的函数；方法二：$E(T|Y_1)$</td></tr>
+<tr><td>"多参数" / "联合充分"</td><td>多参数Fisher矩阵</td><td>约束$q$个，LRT自由度$=q$</td></tr>
+</table>
+
+<h3>关键数字与自由度汇总</h3>
+<div class="g2">
+<div class="card key">
+<div class="card-label">自由度速查</div>
+<ul>
+<li>$(n-1)S^2/\sigma^2\sim\chi^2(\mathbf{n-1})$（损失1个）</li>
+<li>$\bar X-\mu$ 的 $t$ 分布：$\mathbf{n-1}$</li>
+<li>两总体 $t$ 检验（方差相等）：$\mathbf{n_1+n_2-2}$</li>
+<li>方差比 $F$ 检验：$\mathbf{(n_1-1,n_2-1)}$</li>
+<li>ANOVA $F$：$\mathbf{(r-1, n-r)}$</li>
+<li>回归 $\sigma^2$ 估计：分母 $\mathbf{n-2}$</li>
+<li>拟合优度 $\chi^2$：$\mathbf{k-1-r}$（$r$=估计参数数）</li>
+<li>LRT渐近：$\chi^2(\mathbf{q})$，$q$=约束个数</li>
+</ul>
+</div>
+<div class="card warn">
+<div class="card-label">⚠️ 最常见错误</div>
+<ul>
+<li>$n$个样本Fisher信息是 $\mathbf{n}I(\theta)$，不是 $I(\theta)$</li>
+<li>LRT自由度 = <span class="red">约束数</span>，不是参数维数</li>
+<li>$\hat\sigma^2_{\text{MLE}}=B_2$（有偏），无偏估计是 $S^2$</li>
+<li>完备性：$E[u(Z)]=0\Rightarrow u=0$（方向不可逆）</li>
+<li>$U[0,\theta]$ 不属于指数族，但 $X_{(n)}$ 仍是CSS</li>
+<li>$t_{1-\alpha}(n)=-t_\alpha(n)$（对称）</li>
+<li>$F_{1-\alpha}(n_1,n_2)=1/F_\alpha(n_2,n_1)$（互倒）</li>
+<li>置信区间：$\theta$ 固定，$L,U$ 随机，不是"$\theta$ 在区间里的概率"</li>
+</ul>
+</div>
+</div>
+
+<h3>核心公式总览</h3>
+<div class="g3">
+<div class="fbox">
+<p style="font-size:12px;color:var(--muted);margin-bottom:6px;">Fisher信息量</p>
+$$I(\theta)=-E\!\left[\frac{\partial^2\log f}{\partial\theta^2}\right]$$
+</div>
+<div class="fbox">
+<p style="font-size:12px;color:var(--muted);margin-bottom:6px;">Rao-Cramer下界</p>
+$$\text{Var}(Y)\ge\frac{[k'(\theta)]^2}{nI(\theta)}$$
+</div>
+<div class="fbox">
+<p style="font-size:12px;color:var(--muted);margin-bottom:6px;">Wilks定理（LRT）</p>
+$$-2\log\Lambda\xrightarrow{D}\chi^2(q)$$
+</div>
+<div class="fbox">
+<p style="font-size:12px;color:var(--muted);margin-bottom:6px;">学生定理</p>
+$$\frac{\bar X-\mu}{S/\sqrt{n}}\sim t(n-1)$$
+</div>
+<div class="fbox">
+<p style="font-size:12px;color:var(--muted);margin-bottom:6px;">MSE分解</p>
+$$\text{MSE}=\text{Var}+\text{Bias}^2$$
+</div>
+<div class="fbox">
+<p style="font-size:12px;color:var(--muted);margin-bottom:6px;">指数族CSS</p>
+$$Y_1=\sum_{i=1}^nK(X_i)$$
+</div>
+</div>
+
+</section>
+
+</main>
+</div>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggleSol(btn){
+  const sol=btn.nextElementSibling;
+  sol.classList.toggle('open');
+  btn.textContent=sol.classList.contains('open')?'收起解答 ▲':'查看解答 ▼';
+}
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('nav.sidebar a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector(`nav.sidebar a[href="#${e.target.id}"]`);
+      if(a)a.classList.add('active');
+    }
+  });
+},{threshold:0.2});
+secs.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

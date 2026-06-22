@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数理统计期末复习看板 · SUFE 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB',sans-serif;background:#f5f5f0;color:#1a1a1a;min-height:100vh;padding:2rem}
+.container{max-width:900px;margin:0 auto}
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #e0e0d8}
+.course-title{font-size:20px;font-weight:600;color:#1a1a2e}
+.course-sub{font-size:13px;color:#666;margin-top:3px}
+.badge{font-size:11px;padding:4px 12px;border-radius:99px;background:#e8f0fe;color:#1967d2;font-weight:600}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.5rem}
+.metric{background:#fff;border-radius:10px;padding:1rem 1.1rem;border:1px solid #e8e8e0}
+.metric-label{font-size:12px;color:#888;margin-bottom:5px}
+.metric-val{font-size:24px;font-weight:600;color:#1a1a2e}
+.metric-sub{font-size:11px;color:#aaa;margin-top:3px}
+.section-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:1rem;margin-bottom:1.25rem}
+.card{background:#fff;border:1px solid #e8e8e0;border-radius:12px;padding:1.1rem 1.3rem}
+.card-title{font-size:13px;font-weight:600;color:#555;margin-bottom:.9rem;display:flex;align-items:center;gap:6px}
+.chapter-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.chapter-name{font-size:12px;color:#333;width:148px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:7px;background:#f0f0ea;border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px}
+.chapter-pct{font-size:11px;color:#888;width:30px;text-align:right;flex-shrink:0}
+.star-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;padding:5px 0;border-bottom:1px solid #f4f4f0}
+.star-row:last-child{border-bottom:none}
+.star-name{font-size:12px;color:#333}
+.stars{display:flex;gap:3px}
+.star-dot{width:9px;height:9px;border-radius:50%;background:#e8e8e0}
+.star-dot.on{background:#f59e0b}
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+.checklist-item{display:flex;align-items:flex-start;gap:9px;margin-bottom:7px;cursor:pointer;padding:6px 8px;border-radius:8px;transition:background .15s}
+.checklist-item:hover{background:#f9f9f5}
+.check-box{width:17px;height:17px;border-radius:4px;border:2px solid #ccc;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.check-box.done{background:#059669;border-color:#059669}
+.check-text{font-size:12px;color:#333;line-height:1.5}
+.check-text.done{color:#aaa;text-decoration:line-through}
+.tip-item{display:flex;gap:9px;margin-bottom:8px;padding:7px 9px;border-radius:8px;border-left:3px solid #ef4444;background:#fef2f2}
+.tip-num{font-size:11px;font-weight:700;color:#dc2626;flex-shrink:0;width:15px}
+.tip-text{font-size:11px;color:#7f1d1d;line-height:1.6}
+.exam-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f4f4f0}
+.exam-row:last-child{border-bottom:none}
+.exam-name{font-size:12px;color:#333;font-weight:600}
+.exam-tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{font-size:10px;padding:2px 8px;border-radius:99px;font-weight:600}
+.tag-blue{background:#dbeafe;color:#1e40af}
+.tag-green{background:#dcfce7;color:#166534}
+.tag-amber{background:#fef3c7;color:#92400e}
+.tag-purple{background:#ede9fe;color:#5b21b6}
+.check-count{font-size:11px;color:#aaa;margin-left:auto}
+.progress-bar-wrap{margin-top:4px;height:4px;background:#e8e8e0;border-radius:2px;overflow:hidden}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,#059669,#10b981);border-radius:2px;transition:width .4s}
+@media(max-width:640px){.grid-4{grid-template-columns:repeat(2,1fr)}.section-grid,.bottom-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-bar">
+    <div>
+      <div class="course-title">📊 数理统计 · 期末复习看板</div>
+      <div class="course-sub">上海财经大学 · 信息管理与工程学院 · 袁洪松 · 2026春季</div>
+    </div>
+    <span class="badge">Final Exam Prep</span>
+  </div>
+
+  <div class="grid-4">
+    <div class="metric"><div class="metric-label">覆盖章节</div><div class="metric-val">13</div><div class="metric-sub">第2–14讲</div></div>
+    <div class="metric"><div class="metric-label">模拟卷套数</div><div class="metric-val">3</div><div class="metric-sub">含完整解析</div></div>
+    <div class="metric"><div class="metric-label">精讲例题</div><div class="metric-val">14</div><div class="metric-sub">来自历次作业</div></div>
+    <div class="metric"><div class="metric-label">高频失分点</div><div class="metric-val">10</div><div class="metric-sub">⚠️ 必看！</div></div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #e8e8e0;border-radius:12px;padding:.8rem 1.3rem;margin-bottom:1.25rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <span style="font-size:13px;font-weight:600;color:#555">总体复习进度</span>
+      <span id="overall-pct" style="font-size:13px;font-weight:600;color:#059669">0%</span>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="overall-bar" style="width:0%"></div></div>
+  </div>
+
+  <div class="section-grid">
+    <div class="card">
+      <div class="card-title">📈 章节重要程度</div>
+      <div id="chapters"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">⭐ 题型难度</div>
+      <div id="topics"></div>
+    </div>
+  </div>
+
+  <div class="bottom-grid">
+    <div class="card">
+      <div class="card-title">✅ 复习进度打卡 <span class="check-count" id="check-count">0/15</span></div>
+      <div id="checklist"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">⚠️ 高频失分点（Top 5）</div>
+      <div id="tips"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 模拟卷概览</div>
+    <div id="exams"></div>
+  </div>
+</div>
+
+<script>
+const chapters=[
+  {name:"学生定理 & 抽样分布",pct:95,color:"#059669"},
+  {name:"假设检验",pct:95,color:"#059669"},
+  {name:"MVUE（两种方法）",pct:92,color:"#059669"},
+  {name:"Fisher信息量 & RCB",pct:90,color:"#2563eb"},
+  {name:"正则指数族 & CSS",pct:90,color:"#2563eb"},
+  {name:"区间估计（枢轴量法）",pct:88,color:"#2563eb"},
+  {name:"MLE & 矩估计",pct:85,color:"#2563eb"},
+  {name:"完备性 & L-S定理",pct:85,color:"#2563eb"},
+  {name:"充分统计量",pct:80,color:"#d97706"},
+  {name:"三大渐近检验",pct:78,color:"#d97706"},
+  {name:"单因素ANOVA",pct:75,color:"#d97706"},
+  {name:"三大分布识别",pct:70,color:"#9ca3af"},
+  {name:"MSE & 估计量评价",pct:65,color:"#9ca3af"},
+];
+const chapDiv=document.getElementById('chapters');
+chapters.forEach(c=>{
+  chapDiv.innerHTML+=`<div class="chapter-row">
+    <span class="chapter-name" title="${c.name}">${c.name}</span>
+    <div class="bar-track"><div class="bar-fill" style="width:${c.pct}%;background:${c.color}"></div></div>
+    <span class="chapter-pct">${c.pct}%</span>
+  </div>`;
+});
+
+const topics=[
+  {name:"MVUE求解",stars:5},{name:"三大渐近检验",stars:4},{name:"完备性验证",stars:4},
+  {name:"假设检验流程",stars:3},{name:"Fisher信息量",stars:3},{name:"区间估计构造",stars:3},
+  {name:"MLE求解",stars:3},{name:"充分统计量",stars:3},{name:"ANOVA表格",stars:2},{name:"三大分布识别",stars:2},
+];
+const topDiv=document.getElementById('topics');
+topics.forEach(t=>{
+  const s=Array.from({length:5},(_,i)=>`<div class="star-dot${i<t.stars?' on':''}"></div>`).join('');
+  topDiv.innerHTML+=`<div class="star-row"><span class="star-name">${t.name}</span><div class="stars">${s}</div></div>`;
+});
+
+const checks=[
+  "三大分布 & 学生定理","矩估计 & MLE（含均匀、正态、Gamma）",
+  "区间估计（单/双总体所有情形）","假设检验（z/t/χ²/F + 成对数据）",
+  "Fisher信息量（三种方法）","Rao-Cramer下界与有效性",
+  "充分统计量（因子分解定理）","正则指数族判断 & CSS",
+  "完备性证明（标准流程）","MVUE（L-S法 & R-B法）",
+  "单因素ANOVA方差分析表","三大渐近检验（LRT/Wald/Score）",
+  "模拟卷第1套（做题 + 对答案）","模拟卷第2套","模拟卷第3套",
+];
+let done=JSON.parse(localStorage.getItem('stats_checks')||'[]');
+function renderChecks(){
+  const cl=document.getElementById('checklist');
+  cl.innerHTML='';
+  checks.forEach((c,i)=>{
+    const d=done.includes(i);
+    cl.innerHTML+=`<div class="checklist-item" onclick="toggle(${i})">
+      <div class="check-box${d?' done':''}">
+        ${d?'<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>':''}
+      </div>
+      <span class="check-text${d?' done':''}">${c}</span>
+    </div>`;
+  });
+  document.getElementById('check-count').textContent=`${done.length}/${checks.length}`;
+  const pct=Math.round(done.length/checks.length*100);
+  document.getElementById('overall-pct').textContent=pct+'%';
+  document.getElementById('overall-bar').style.width=pct+'%';
+}
+function toggle(i){
+  const idx=done.indexOf(i);
+  if(idx===-1) done.push(i); else done.splice(idx,1);
+  localStorage.setItem('stats_checks',JSON.stringify(done));
+  renderChecks();
+}
+renderChecks();
+
+const tips=[
+  "n个样本的Fisher信息量是n·I(θ)，不是I(θ)！",
+  "正态MLE：σ̂²=B₂（分母n，有偏）；S²才是无偏估计",
+  "LRT自由度=约束个数q，不是参数维数p",
+  "U[0,θ]不属于正则指数族，但X(n)仍是CSS（需直接验证）",
+  "Wald用θ̂作分母；Score用θ₀作分母，注意区分！",
+];
+const tipDiv=document.getElementById('tips');
+tips.forEach((t,i)=>{
+  tipDiv.innerHTML+=`<div class="tip-item"><span class="tip-num">${i+1}</span><span class="tip-text">${t}</span></div>`;
+});
+
+const exams=[
+  {name:"模拟卷 第1套",tags:["Gamma分布","两总体检验","Beta MVUE","三大检验"],cls:"tag-blue"},
+  {name:"模拟卷 第2套",tags:["Laplace分布","ANOVA三区域","几何分布MVUE","正态推断"],cls:"tag-green"},
+  {name:"模拟卷 第3套",tags:["均匀分布CSS","N(μ₀,θ)","Poisson R-B","银行储蓄"],cls:"tag-purple"},
+];
+const exDiv=document.getElementById('exams');
+exams.forEach(e=>{
+  const tags=e.tags.map(t=>`<span class="tag ${e.cls}">${t}</span>`).join('');
+  exDiv.innerHTML+=`<div class="exam-row"><span class="exam-name">${e.name}</span><div class="exam-tags">${tags}</div></div>`;
+});
+</script>
+</body>
+</html>
