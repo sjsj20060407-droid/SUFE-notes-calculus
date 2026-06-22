@@ -10,7 +10,7 @@
 SUFE-notes-calculus/
 ├── README.md                              ← 本文件
 ├── DASHBOARD.md                           ← Markdown看板（章节进度、打卡清单）
-├── dashboard.html                         ← 交互式HTML看板（可打卡）
+├── dashboard.html                         ← 交互式HTML看板（可打卡，需GitHub Pages）
 ├── notes/
 │   ├── 数理统计完整笔记.md                ← 第2-14讲全知识点（含公式、定理、速查表）
 │   ├── 题型汇总与例题精讲.md              ← 13类题型 + 精选作业例题详解
@@ -25,7 +25,6 @@ SUFE-notes-calculus/
     ├── 模拟卷第1套_答案解析.pdf            ← 含知识点标注+解题思路+详细步骤
     ├── 模拟卷第2套_答案解析.pdf
     └── 模拟卷第3套_答案解析.pdf
-
 ```
 
 ---
@@ -34,7 +33,7 @@ SUFE-notes-calculus/
 
 | 章节 | 主题 | 重要程度 |
 |------|------|---------|
-| 第2讲 | 三大分布（$\chi^2$, $t$, $F$）& 统计量 | ⭐⭐⭐ |
+| 第2讲 | 三大分布（χ², t, F）& 统计量 | ⭐⭐⭐ |
 | 第3讲 | 学生定理 & 两总体抽样分布 | ⭐⭐⭐⭐⭐ |
 | 第3-4讲 | 矩估计 & 极大似然估计（MLE） | ⭐⭐⭐⭐⭐ |
 | 第4讲 | 无偏性、MSE、有效性 | ⭐⭐⭐⭐ |
@@ -52,31 +51,61 @@ SUFE-notes-calculus/
 
 ## ⚠️ 高频失分点（10条必看）
 
-1. $n$个样本的Fisher信息量是 $n\cdot I(\theta)$，**不是** $I(\theta)$
-2. LRT自由度 = **约束个数**，不是参数维数
-3. 正态MLE：$\hat{\sigma}^2 = B_2$（分母$n$，**有偏**）；$S^2$才是无偏估计
-4. 完备性验证方向：$E[u(Z)]=0 \Rightarrow u\equiv 0$（不可颠倒）
-5. $U[0,\theta]$**不属于**正则指数族（支撑含$\theta$），但$X_{(n)}$仍是CSS
-6. $t$分布对称：$t_{1-\alpha}(n) = -t_\alpha(n)$
-7. $F$分布互倒：$F_{1-\alpha}(n_1,n_2) = 1/F_\alpha(n_2,n_1)$（注意互换！）
-8. 置信区间：$\theta$固定，$L,U$随机
-9. $\text{MSE} = \text{Var} + \text{偏差}^2$；有偏估计MSE可能更小
-10. Wald用$\hat{\theta}$作分母；Score用$\theta_0$作分母
+**1. Fisher信息量忘乘 n**
+
+$$n \text{ 个样本的Fisher信息量} = n \cdot I(\theta) \text{，不是 } I(\theta)$$
+
+**2. LRT自由度搞错**
+
+$$-2\log\Lambda \xrightarrow{D} \chi^2(q), \quad q = \text{约束个数，不是参数维数}$$
+
+**3. 正态 MLE 有偏**
+
+$$\hat{\sigma}^2_{\text{MLE}} = B_2 = \frac{1}{n}\sum(X_i-\bar{X})^2 \quad \text{（有偏，分母 } n \text{）}$$
+
+$$S^2 = \frac{1}{n-1}\sum(X_i-\bar{X})^2 \quad \text{（无偏，分母 } n-1 \text{）}$$
+
+**4. 完备性验证方向不可颠倒**
+
+$$E_\theta[u(Z)] = 0 \text{ 对所有 } \theta \Rightarrow u \equiv 0 \quad \text{（方向不可反过来）}$$
+
+**5. 均匀分布与正则指数族**
+
+$$U[0,\theta] \text{ 支撑含 } \theta \Rightarrow \text{不属于正则指数族，但 } X_{(n)} \text{ 仍是CSS}$$
+
+**6. t 分布对称性**
+
+$$t_{1-\alpha}(n) = -t_{\alpha}(n)$$
+
+**7. F 分布互倒（注意自由度互换）**
+
+$$F_{1-\alpha}(n_1, n_2) = \frac{1}{F_{\alpha}(n_2, n_1)}$$
+
+**8. 置信区间的正确理解**
+
+$$\theta \text{ 是固定常数，} L \text{ 和 } U \text{ 是随机变量，不是 "}\theta\text{ 落在区间内的概率为 }1-\alpha\text{"}$$
+
+**9. MSE 分解**
+
+$$\text{MSE}(\hat{\theta}) = \text{Var}(\hat{\theta}) + \text{Bias}^2(\hat{\theta}) \quad \text{有偏估计的MSE可能比无偏更小}$$
+
+**10. Wald 与 Score 检验分母不同**
+
+$$\chi^2_W = \frac{n(\hat{\theta}-\theta_0)^2}{1/I(\hat{\theta})} \quad \text{（分母用 } \hat{\theta} \text{）}$$
+
+$$\chi^2_R = \frac{[l'(\theta_0)]^2}{n \cdot I(\theta_0)} \quad \text{（分母用 } \theta_0 \text{）}$$
 
 ---
 
-## 📝 模拟卷题型分布
-
-| 套次 | 选择（20分） | 填空（20分） | 计算（60分） | 重点考查 |
-|------|------------|------------|------------|---------|
-| 第1套 | 三大分布、Fisher信息量、指数族 | MLE、ANOVA、CSS | Gamma分布推断、两总体检验、Beta分布MVUE、Poisson三大检验 |
-| 第2套 | 三大分布关系、CI性质、R-B定理 | CI公式、成对t统计量、MVUE | 正态数据检验、Laplace分布、ANOVA（三区域）、几何分布MVUE |
-| 第3套 | L-S定理、F分布性质、充分统计量 | Fisher信息矩阵、ANOVA自由度、正态MVUE | 银行储蓄检验、均匀分布CSS、N(mu0,theta)有效性、Poisson Rao-Blackwell |
-
----
 ## 📝 试卷资料
 
-文件来源说明数理统计_Spring26_期末样卷.pdf老师发布官方样卷，最接近真实考试风格模拟卷第1套.pdf自制重点：Gamma分布、两总体检验、三大渐近检验模拟卷第2套.pdf自制重点：Laplace分布、ANOVA、几何分布MVUE模拟卷第3套.pdf自制重点：均匀分布CSS、N(μ₀,θ)有效性、Poisson R-B
+| 文件 | 来源 | 说明 |
+|------|------|------|
+| 数理统计_Spring26_期末样卷.pdf | 老师发布 | 官方样卷，最接近真实考试风格 |
+| 模拟卷第1套.pdf | 自制 | 重点：Gamma分布、两总体检验、三大渐近检验 |
+| 模拟卷第2套.pdf | 自制 | 重点：Laplace分布、ANOVA、几何分布MVUE |
+| 模拟卷第3套.pdf | 自制 | 重点：均匀分布CSS、N(μ₀,θ)有效性、Poisson R-B |
 
 ---
+
 *Last updated: 2026年6月 | For academic use only*
