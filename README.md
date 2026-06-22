@@ -7,19 +7,25 @@
 ## 📁 仓库结构
 
 ```
-SUFE-notes-stats/
-├── README.md                          ← 本文件
+SUFE-notes-calculus/
+├── README.md                              ← 本文件
+├── DASHBOARD.md                           ← Markdown看板（章节进度、打卡清单）
+├── dashboard.html                         ← 交互式HTML看板（可打卡）
 ├── notes/
-│   ├── 数理统计完整笔记.md            ← 第2-14讲全知识点（含公式、定理、速查表）
-│   └── 题型汇总与例题精讲.md          ← 13类题型 + 精选作业例题详解
+│   ├── 数理统计完整笔记.md                ← 第2-14讲全知识点（含公式、定理、速查表）
+│   ├── 题型汇总与例题精讲.md              ← 13类题型 + 精选作业例题详解
+│   └── 数理统计完整复习资料（原版）.html  ← 老师版原始复习资料（含MathJax公式）
 ├── exams/
-│   ├── 模拟卷第1套.pdf               ← 选择+填空+计算，接近真题水平
+│   ├── 数理统计_Spring26_期末样卷.pdf     ← 老师发布的原版样卷
+│   ├── 模拟卷第1套.pdf                    ← 选择+填空+计算，接近真题水平
 │   ├── 模拟卷第2套.pdf
 │   └── 模拟卷第3套.pdf
 └── solutions/
-    ├── 模拟卷第1套_答案解析.pdf       ← 含知识点标注+解题思路+详细步骤
+    ├── 数理统计_Spring26_期末样卷_解析.pdf ← 原版样卷参考解析
+    ├── 模拟卷第1套_答案解析.pdf            ← 含知识点标注+解题思路+详细步骤
     ├── 模拟卷第2套_答案解析.pdf
     └── 模拟卷第3套_答案解析.pdf
+
 ```
 
 ---
@@ -68,13 +74,9 @@ SUFE-notes-stats/
 | 第3套 | L-S定理、F分布性质、充分统计量 | Fisher信息矩阵、ANOVA自由度、正态MVUE | 银行储蓄检验、均匀分布CSS、N(mu0,theta)有效性、Poisson Rao-Blackwell |
 
 ---
+## 📝 试卷资料
 
-## 🔗 参考资料
-
-- Hogg, McKean & Craig, *Introduction to Mathematical Statistics*, 8th ed.
-- 袁洪松老师课件（第2-14讲）
-- 历次作业（HW2-7）
+文件来源说明数理统计_Spring26_期末样卷.pdf老师发布官方样卷，最接近真实考试风格模拟卷第1套.pdf自制重点：Gamma分布、两总体检验、三大渐近检验模拟卷第2套.pdf自制重点：Laplace分布、ANOVA、几何分布MVUE模拟卷第3套.pdf自制重点：均匀分布CSS、N(μ₀,θ)有效性、Poisson R-B
 
 ---
-
 *Last updated: 2026年6月 | For academic use only*
