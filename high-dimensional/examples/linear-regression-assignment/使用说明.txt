@@ -1,0 +1,14 @@
+作业编程题复现
+
+1. 安装 Python 后，在此目录运行：
+   python -m pip install -r requirements.txt
+2. 运行：python homework_code.py
+3. results 文件夹保存图表和计算表。
+
+Boston.csv 是作业提供的原始文件，未改列名 NX。
+water.csv 从 CRAN alr4 的 water.rda 转换而来：
+https://github.com/cran/alr4/blob/master/data/water.rda
+获取日期：2026-09-26。原数据归原作者所有。
+脚本和这两个数据文件在一起即可离线计算，不需要下载教材数据。
+
+正式提交请按大纲只提交一份 Word；本包用于自己复现。
