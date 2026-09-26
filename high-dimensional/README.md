@@ -57,13 +57,11 @@
 
 代码追踪是固定示例的教学演示，不是在线 R 解释器。工作台不调用聊天模型，也不自动判断自由文字证明是否正确。证明题总分会明确标注含自评。
 
-## 放进现有 GitHub 仓库
+## 在线体验与源码
 
-目标：`sjsj20060407-droid/SUFE-notes-calculus`，将本目录放在仓库根目录下的 `high-dimensional/`。已有的数理统计文件不需要移动或删除。
+本项目位于 [SUFE-notes-calculus](https://github.com/sjsj20060407-droid/SUFE-notes-calculus) 仓库的 `high-dimensional/` 目录。原有数理统计资料仍在仓库中。
 
-提交后，若仓库已从 main 分支根目录发布 GitHub Pages，工作台路径为 `/SUFE-notes-calculus/high-dimensional/`。如果尚未启用 Pages，需要在仓库 Settings → Pages 中选择 main 分支、根目录发布，并等待构建完成。只有部署成功后，在线地址才可用。
-
-本次交付附带待提交 patch 和网站 ZIP。发布状态以实际远程提交与 Pages 构建结果为准；本地文件完成不代表已经上线。
+[打开在线工作台](https://sjsj20060407-droid.github.io/SUFE-notes-calculus/high-dimensional/)。网页从 `main` 分支根目录发布；也可以下载本目录并在电脑上打开 `index.html`。
 
 ## 维护
 
